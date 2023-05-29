@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Appointments Waiting</h1>
+  <ul>
+    {% for booking in bookings %}
+      <li>{{ booking.name }} - {{ booking.phone }}</li>
+    {% empty %}
+      <li>No appointments {{title}}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

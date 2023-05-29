@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<html dir="rtl" lang="ar">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+</style>
+<section style="  width: 80%;margin: auto;">
+
+
+  <style>
+  th, td {
+padding:15px ;
+
+  }
+  </style>
+
+  <h2>dask top</h2>
+{% if  bookings %}
+<div style="  border: 1px solid #ddd; margin-top:15px;  border-radius: 10px;  text-align: center;">
+<table id="myTable" style="width:100%">
+    <tr >
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Knew From</th>
+       <th>Services </th>
+    </tr>
+  </table>
+  </div>
+{% for booking in bookings %}
+<div style="  border: 1px solid #ddd; margin-top:15px;   border-radius: 10px;text-align: center; ">
+  <table style="width:100%">
+
+    <tr>
+      <td>{{ booking.name }}</td>
+      <td>{{ booking.phone }}</td>
+      <td>{{ booking.get_knew_from_display }}</td>
+      <td><button id="myBtn">Open Modal</button>
+
+        <div id="myModal" class="modal">
+              <div class="modal-content">
+                <span class="close">&times;</span>
+        <ul>{% for service in booking.service.all %}<li><ul><li>Name: {{ service.Title }}  </li><li> price: {{ service.price }}  </li></ul> </li><br>{% endfor %}  </ul>
+              </div> </div>
+
+
+      </td>
+    </tr>  </table>  </div>
+
+
+
+ {% endfor %}
+ {% else %}
+<h1> ddddddddddddddddd </h1>
+ {% endif %}
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>mobil</h2>
+
+<section style="  width:50%;margin: auto;">
+{% if  bookings %}
+{% for booking in bookings %}
+<div style="  border: 1px solid #ddd; margin-top:15px;  border-radius: 10px;text-align: center; ">
+<table style="width:100%">
+  <tr >
+    <th>Name</th>
+      <td>{{ booking.name }}</td>
+
+  </tr>
+</table>
+</div>
+
+<div style="  border: 1px solid #ddd; margin-top:15px;   border-radius: 10px; text-align: center;">
+<table style="width:100%"><tr>
+
+  <th>Phone</th>
+   <td>{{ booking.phone }}</td>  </tr>  </table>  </div>
+
+
+<div style="  border: 1px solid #ddd; margin-top:15px;   border-radius: 10px;text-align: center; ">
+<table style="width:100%"><tr>
+
+  <th>Knew From</th>
+   <td>{{ booking.get_knew_from_display }}</td>  </tr>  </table>  </div>
+
+   <div style="  border: 1px solid #ddd; margin-top:15px;   border-radius: 10px;text-align: center; ">
+   <table style="width:100%"><tr>
+
+     <th>Services </th>
+      <td><button id="myBtn1">Open Modal</button>
+
+
+      </td>  </tr>  </table>  </div>
+
+
+      <div id="myModal1" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+
+      <ul>{% for service in booking.service.all %}<li><ul><li>Name: {{ service.Title }}  </li><li> price: {{ service.price }}  </li></ul> </li><br>{% endfor %}  </ul>
+            </div> </div>
+
+
+
+
+<br><br>
+ {% endfor %}
+
+ {% else %}
+<h1> ddddddddddddddddd </h1>
+ {% endif %}
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the modal
+var modal1 = document.getElementById("myModal1");
+
+// Get the button that opens the modal
+var btn1 = document.getElementById("myBtn1");
+
+
+
+
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks the button, open the modal
+btn1.onclick = function() {
+  modal.style.display = "block";
+}
+
+
+
+
+
+
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>

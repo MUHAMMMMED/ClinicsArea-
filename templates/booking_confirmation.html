@@ -1,0 +1,91 @@
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','{{web.pixal_id}}');</script>
+<!-- End Google Tag Manager -->
+
+
+
+<style media="screen">
+  /* Style for the confirmation message */
+.confirmation-message {
+  margin: 50px auto;
+  max-width: 600px;
+  padding: 20px;
+  text-align: center;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+}
+
+/* Style for the booking ID */
+.booking-id {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Style for the back and view buttons */
+.back-button,
+.view-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #d1c091;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+/* Style for the back button */
+.back-button {
+  margin-right: 10px;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  .confirmation-message {
+    margin: 20px auto;
+    padding: 10px;
+  }
+
+  .back-button,
+  .view-button {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+</style>
+
+
+
+
+
+
+
+ <!-- Google Tag Manager (noscript) -->
+ <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{web.pixal_id}}"
+ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+ <!-- End Google Tag Manager (noscript) -->
+
+
+
+
+
+<!-- Confirmation message -->
+<div class="confirmation-message">
+  <h2>
+  تم تأكيد حجزك!
+
+ </h2>
+
+  <p>
+ شكرًا لاستخدام خدماتنا
+   </p>
+
+  <!-- Back and view buttons -->
+  <a href="{% url 'webs:web' web %}" class="back-button">  عودة إلى الصفحة الرئيسية</a>
+  <a href="{% url 'webs:categories_services' web  %}" class="view-button"> عرض المزيد من الفئات والخدمات</a>
+</div>

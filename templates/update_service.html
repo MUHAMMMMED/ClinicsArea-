@@ -1,0 +1,544 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br><br>
+<h2 style="color: #695CFE; text-align:center;"> {{title}}     </h2><br>
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+  <p>الكلمات الدالة</p>
+ {{ form.keywords  }}
+
+      <style>
+      @import url('https://fonts.googleapis.com/css2?family=Cairo:slnt,wght@0,500;0,700;2,400&family=Koulen&family=Staatliches&display=swap');
+
+
+
+      #myImg {
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      #myImg:hover {opacity: 0.7;}
+
+      /* The Modal (background) */
+      .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+      }
+
+      /* Modal Content (image) */
+      .modal-content {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+      }
+
+      /* Caption of Modal Image */
+      #caption {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+        text-align: center;
+        color: #ccc;
+        padding: 10px 0;
+        height: 150px;
+      }
+
+      /* Add Animation */
+      .modal-content, #caption {
+        -webkit-animation-name: zoom;
+        -webkit-animation-duration: 0.6s;
+        animation-name: zoom;
+        animation-duration: 0.6s;
+      }
+
+      @-webkit-keyframes zoom {
+        from {-webkit-transform:scale(0)}
+        to {-webkit-transform:scale(1)}
+      }
+
+      @keyframes zoom {
+        from {transform:scale(0)}
+        to {transform:scale(1)}
+      }
+
+      /* The Close Button */
+      .close {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      /* 100% Image Width on Smaller Screens */
+      @media only screen and (max-width: 700px){
+        .modal-content {
+          width: 100%;
+        }
+      }
+      </style>
+
+
+
+
+
+      <div style="width: 99%; margin: auto;">
+
+
+
+
+      {% if service.Image %}
+      <img id="myImg" src="{{ service.Image.url }}" alt="{{ service.Title }}" style="width:100%;
+      box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;">
+
+
+
+       {% endif %}
+         {{ form.Image }}Image
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="img01">
+        <div id="caption"></div>
+      </div>
+
+      </div>
+      <!--  -->
+
+      <div style="width: 100%; margin: auto; background-color: #fff;box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px; margin-top: 50px ;margin-bottom: 50px;  border-radius: 5px; text-align: right; padding: 15px  0px  15px  0px;">
+
+      <div style="padding: 20px; position: relative;float: right; width: 100%; ">
+
+      <h2 style="color: #5a5a5a;
+          font-size: 24px;
+
+          margin-bottom: 1rem;"> {{ service.Title }}</h2>
+          <p>العنوان</p>
+            {{ form.Title  }}
+
+
+      <div>
+      <div  style="width: 50%;float: right;">
+
+      <p  style="    color: #d1c091;
+
+          font-size: 22px;
+          font-weight: 400;
+          margin-bottom: .5rem;">
+
+      {{ service.price }} ر.س
+
+      </p>
+
+      </div>
+
+      <div  style="width: 50%;  float: right;">
+
+
+      <div  style=" width: 70%; margin: auto;  margin-top: 10px; ">
+
+      <p>السعر</p>
+    {{ form.price  }}
+
+
+
+      </div>
+      </div>
+
+
+
+      </div>
+
+
+      <style type="text/css">
+
+
+
+
+      /* Button background color */
+      #add-to-cart-btn {
+        background-color:  #d1c091; /* orange color */
+
+
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        transition: 0.3s;
+        font-size: 17px;
+          border: 1px solid #ccc;
+      margin: 5px;
+      border-radius: 3px;
+      color: #fff;
+      width: 100%;
+
+
+
+
+
+
+
+      }
+
+
+      /* Button hover effect */
+      .add-to-cart-btn:hover {
+        background-color:  #d1c091; /* darker orange color */
+        cursor: pointer;
+      }
+
+
+
+
+
+
+
+
+
+      </style>
+
+
+
+      </div>
+
+
+
+
+
+      <style>
+
+
+      /* Style the tab */
+      .tab {
+        overflow: hidden;
+
+        background-color: #fff;
+        position: relative;
+      float: right;
+      width: 100%;
+
+
+      }
+
+      /* Style the buttons inside the tab */
+      .tab button {
+        background-color: inherit;
+        float: right;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        transition: 0.3s;
+        font-size: 17px;
+          border: 1px solid #ccc;
+      margin: 5px;
+      border-radius: 3px;
+      }
+
+      /* Change background color of buttons on hover */
+      .tab button:hover {
+        background-color: #ddd;
+      }
+
+      /* Create an active/current tablink class */
+      .tab button.active {
+        background-color: #ccc;
+      }
+
+      /* Style the tab content */
+      .tabcontent {
+        display: none;
+        padding: 6px 12px;
+
+        border-top: none;
+      }
+
+
+
+
+
+       @media screen and (max-width: 650px) {
+
+
+
+
+
+
+
+
+      }
+
+
+      </style>
+
+
+      <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'London')"> وصف المنتج </button>
+
+      </div>
+
+      <div id="London" class="tabcontent" style="display: block;">
+
+        {{ form.Description  }}
+
+
+
+
+
+
+
+
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       <style>
+
+
+      form {
+      border-radius: 5px;
+      }
+
+      .container {border-radius: 5px;
+        padding: 20px;
+        background-color: #fff;
+
+      }
+
+      input[type=text], input[type=submit] {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+      }
+
+
+      input[type=text], select, textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-top: 6px;
+        margin-bottom: 16px;
+        resize: vertical;
+      }
+
+
+
+
+
+
+
+      input[type=checkbox] {
+        margin-top: 16px;
+      }
+
+      input[type=submit] {
+        background-color: #d1c091;
+        color: white;
+        border: none;
+      }
+
+      input[type=submit]:hover {
+        opacity: 0.8;
+      }
+      </style>
+
+
+
+
+
+
+
+      <div style=" width: 100%; background:#fff;box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;  border: 1px solid #ccc;border-radius: 5px; margin-top: 15px; ">
+
+      {% if service.long_image %}
+      <img   src="{{ service.long_image.url }}" alt="{{ service.Title }}" style="width:100%;border-radius:  5px 5px  0px 0px ; ">
+
+
+      </div>
+
+{% endif %}
+
+
+
+   <br>
+   <p> اختر صوره مناسبة للصوره السابقه</p>
+   {{ form.long_image  }}
+
+   <br><br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <p>اختيار الفئة<p>
+   <select id="id_category" name="category_id">
+     {% for category in categories %}
+       <option value="{{ category.id }}">{{ category.Name }}</option>
+     {% endfor %}
+   </select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+<br><br><br><br>
+
+
+
+<p>يتم عرض العرض أو إخفاؤه عن طريق وضع علامة صح للتنشيط.
+
+</p>
+
+
+    {{ form.active  }}
+    <br>
+    <br>
+
+    <style media="screen">
+      .btn_submit {
+     background-color: var(--primary-color);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+    </style>
+
+      <button class="btn_submit" type="submit">Save</button>
+        <br>
+        <br>
+        <br>
+        <br>
+
+    </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

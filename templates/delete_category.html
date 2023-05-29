@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+
+
+
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:slnt,wght@0,500;0,700;2,400&family=Koulen&family=Staatliches&display=swap');
+
+
+        /* Set a style for all buttons */
+        .buttonform {
+          background-color: #7e91dc;
+          color: white;
+          padding: 14px 20px;
+          margin: 8px 0;
+          border: none;
+          cursor: pointer;
+          width: 100%;
+        }
+
+        .buttonform:hover {
+          opacity: 0.8;
+        }
+
+
+
+
+
+
+
+        #myImg {
+          border-radius: 5px;
+          cursor: pointer;
+          transition: 0.3s;
+        }
+
+        #myImg:hover {opacity: 0.7;}
+
+ 
+
+        @-webkit-keyframes zoom {
+          from {-webkit-transform:scale(0)}
+          to {-webkit-transform:scale(1)}
+        }
+
+        @keyframes zoom {
+          from {transform:scale(0)}
+          to {transform:scale(1)}
+        }
+
+        /* The Close Button */
+        .close {
+          position: absolute;
+          top: 15px;
+          right: 35px;
+          color: #f1f1f1;
+          font-size: 40px;
+          font-weight: bold;
+          transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+          color: #bbb;
+          text-decoration: none;
+          cursor: pointer;
+        }
+
+        /* 100% Image Width on Smaller Screens */
+        @media only screen and (max-width: 700px){
+          .modal-content {
+            width: 100%;
+          }
+        }
+        </style>
+
+
+
+
+
+        <div style="width: 59%; margin: auto;">
+
+
+        <img id="myImg" src="{% static 'images/delete.jpg' %}" alt=" " style="width:100%; margin:auto;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;">
+
+
+
+        <p class="text-ailgn:center;">
+هل أنت متأكد أنك تريد حذف ؟
+
+ </p>
+        <form method="POST">
+          {% csrf_token %}
+          <div class="d-grid gap-2">
+            <button type="submit" class="buttonform">نعم، حذف.</button>
+          </div>  </form>
+          <div class="d-grid gap-2 mt-3">
+
+            <a href="{% url 'Dashboard:dashboard' %}"  >
+
+
+  <button   class="buttonform" style="  background-color: red;">إلغاء  </button>
+
+              </a>
+          </div>
+
+      </div>
+    </div>
+  </div>
+{% endblock %}

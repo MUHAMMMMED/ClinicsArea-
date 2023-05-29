@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+
+  <link rel=
+  {% block meta %}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% endblock %}
+  {% block css %}
+  <!-- <link rel="stylesheet" href=" % static 'css/main.css'  > -->
+
+<style media="screen">
+
+
+/* Google Font Import - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+/* Google Font Import - Cairo */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:slnt,wght@0,500;0,700;2,400&family=Koulen&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+/*    font-family: 'Poppins', sans-serif;*/
+font-family: 'Cairo', sans-serif;
+
+}
+
+:root{
+    /* ===== Colors ===== */
+    --body-color: #E4E9F7;
+    --sidebar-color: #FFF;
+    --primary-color: #695CFE;
+    --primary-color-light: #F6F5FF;
+    --toggle-color: #DDD;
+    --text-color: #707070;
+
+    /* ====== Transition ====== */
+    --tran-03: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.3s ease;
+    --tran-05: all 0.3s ease;
+}
+
+body{
+    min-height: 100vh;
+    background-color: var(--body-color);
+    transition: var(--tran-05);
+}
+
+::selection{
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+body.dark{
+    --body-color: #18191a;
+    --sidebar-color: #242526;
+    --primary-color: #3a3b3c;
+    --primary-color-light: #3a3b3c;
+    --toggle-color: #fff;
+    --text-color: #ccc;
+}
+
+/* ===== Sidebar ===== */
+.page{
+
+  width: 90%;
+  margin: auto;
+  margin-bottom: 50px;
+}
+</style>
+
+
+
+
+<style>
+
+/* Default styles for all device widths */
+.container_body{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+
+
+}
+
+h1 {
+  font-size: 36px;
+  color: #333;
+}
+
+p {
+  font-size: 18px;
+  color: #555;
+}
+
+/* .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+} */
+
+/* Media queries for different device width breakpoints */
+@media only screen and (max-width: 480px) {
+  /* Styles for mobile devices */
+  h1 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+
+  .btn {
+    padding: 8px 16px;
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  /* Styles for iPads and tablets */
+  h1 {
+    font-size: 30px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+
+  .btn {
+    padding: 8px 16px;
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  /* Styles for small screens and laptops */
+  h1 {
+    font-size: 36px;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  .btn {
+    padding: 10px 20px;
+  }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+  /* Styles for desktops and large screens */
+  h1 {
+    font-size: 48px;
+  }
+
+  p {
+    font-size: 20px;
+  }
+
+  .btn {
+    padding: 12px 24px;
+  }
+}
+
+@media only screen and (min-width: 1201px) {
+  /* Styles for extra large screens and TV */
+  h1 {
+    font-size: 60px;
+  }
+
+  p {
+    font-size: 24px;
+  }
+
+  .btn {
+    padding: 15px 30px;
+  }
+}
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
+  {% endblock %}
+</head>
+<body>
+  <header>
+    {% block header %}
+    <!-- <h1>My Site</h1> -->
+
+ <style>
+ nav {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   background-color: #f8f8f8;
+   padding: 10px;
+   text-align: center;
+ }
+
+ .nav-links {
+   display: flex;
+   list-style: none;
+   margin: 0;
+   padding: 0;
+   align-items: center;
+   width: 100%;
+ }
+
+ .nav-links li {
+   margin-right: 20px;
+ }
+
+ .nav-links li:last-child {
+   margin-right: 0;
+ }
+
+ .nav-links a {
+   color: #333;
+   text-decoration: none;
+   font-weight: bold;
+   font-size: 16px;
+   padding: 10px;
+   border-radius: 5px;
+ }
+
+ .nav-links a:hover {
+   background-color: #ddd;
+ }
+ </style>
+
+
+
+
+
+
+
+
+ {% endblock %}
+</header>
+
+  <main class="container_body">
+
+
+    <nav>
+      <ul class="nav-links">
+        <li><a href="{% url 'Dashboard:dashboard' %}">  لوحات التحكم  </a></li>
+        <li><a href="{% url 'Dashboard:Appointment_waiting' %}"> الحجوزات</a></li>
+        <li><a href="{% url 'Dashboard:Report' %}"> التقارير</a></li>
+          <li class="list-group-item"><a href="{% url 'User:logout' %}"><i class="feather icon-log-out m-r-5"></i>تسجيل خروج</a></li>
+      </ul>
+    </nav>
+
+
+
+
+
+
+
+    {% block content %}
+    {% endblock %}
+  </main>
+
+
+<footer style="  align-items: center;border: 1px solid #d1c091;   ">
+{% block footer %}
+<style type="text/css"> .aa {  color: #d1c091;text-decoration: none;  background-color: transparent;  font-size: 14px;  }  </style>
+ <div class="col-md-12" style=" text-align: center; font-size: 14px;"><br><span>   Copyright ©  2023   </span>
+
+
+</div>    <div class="col-md-12" style=" text-align: center; font-size: 14px;">    <a  class="aa" href="https://wa.me/+966551808768">  الهدف الرقمي</a>   </div>  </div>   <br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {% endblock %}
+  </footer>
+  {% block scripts %}
+  <script src=" % static 'js/main.js' %  "></script>
+  {% endblock %}
+</body>
+</html>

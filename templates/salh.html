@@ -1,0 +1,803 @@
+
+
+
+{% extends "BaseGeneric.html" %}
+{% load static %}
+
+<title>{{web.slug}}  | {{ service.Title }}  </title>
+
+<meta name="keywords" content="{{ service.keywords }} " />
+{% block content %}
+
+
+
+
+
+
+
+
+
+<div class="topnav" id="myTopnav">
+  {% if web.logo %}
+   <a href="{% url 'webs:web' web.slug %}" class="active"><div class="div-logo" >
+  <img src="{{web.logo.url}}" class="logo-img" alt="{{web}}"> </div> </a>{% endif %}
+    <a href="{% url 'webs:web' web.slug %}">الصفحه الرئيسيه</a>
+  <a href="{% url 'webs:categories_services'  web.slug   %}">جميع العروض  </a>
+
+
+  {% for category in categories_nav %}
+
+  <a href="{% url 'webs:categories' web.slug category.id %}">   {{category.Name}}      </a>
+{% endfor %}
+
+
+
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <samp class="icon-span">
+    <i class="fa fa-bars"></i>    </samp>
+  </a>
+</div>
+</header>
+<br><br>
+
+
+
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:slnt,wght@0,500;0,700;2,400&family=Koulen&family=Staatliches&display=swap');
+
+
+
+#myImg {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#myImg:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)}
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)}
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
+</style>
+
+
+
+
+
+<div style="width: 99%; margin: auto;">
+
+{% if service.Image %}
+<img id="myImg" src="{{ service.Image.url }}" alt="{{ service.Title }}" style="width:100%;
+box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;">  {% endif %}
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="img01">
+  <div id="caption"></div>
+</div>
+
+</div>
+<!--  -->
+
+<div style="width: 100%; margin: auto; background-color: #fff;box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px; margin-top: 50px ;margin-bottom: 50px;  border-radius: 5px; text-align: right; padding: 15px  0px  15px  0px;">
+
+<div style="padding: 20px; position: relative;float: right; width: 100%; ">
+
+<h2 style="color: #5a5a5a;
+    font-size: 24px;
+
+    margin-bottom: 1rem;"> {{ service.Title }}</h2>
+
+
+<div>
+<div  style="width: 50%;float: right;">
+
+<p  style="    color: #d1c091;
+
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: .5rem;">
+
+{{ service.price }} ر.س
+
+</p>
+
+</div>
+
+<div  style="width: 50%;  float: right;">
+
+
+<div  style=" width: 70%; margin: auto;  margin-top: 10px; ">
+
+     <button class="add-to-cart"  id='add-to-cart-btn'   data-id="{{ service.id }}">
+  <span>  إضافة للسلة</span>
+</button>
+</div>
+</div>
+
+
+
+</div>
+
+
+<style type="text/css">
+
+
+
+
+/* Button background color */
+#add-to-cart-btn {
+  background-color:  #d1c091; /* orange color */
+
+
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+    border: 1px solid #ccc;
+margin: 5px;
+border-radius: 3px;
+color: #fff;
+width: 100%;
+
+
+
+
+
+
+
+}
+
+
+/* Button hover effect */
+.add-to-cart-btn:hover {
+  background-color:  #d1c091; /* darker orange color */
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+</style>
+
+
+
+</div>
+
+
+
+
+
+<style>
+
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+
+  background-color: #fff;
+  position: relative;
+float: right;
+width: 100%;
+
+
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: right;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+    border: 1px solid #ccc;
+margin: 5px;
+border-radius: 3px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+
+  border-top: none;
+}
+
+
+ @media screen and (max-width: 650px) {}
+
+}
+
+
+</style>
+
+
+
+
+<div class="tab">  <button class="tablinks" onclick="openCity(event, 'London')"> الوصف </button></div>
+{% if service.Description %}
+<div id="London" class="tabcontent" style="display: block;">
+
+
+<p>{{ service.Description }}</p>
+
+</div>
+{% else %}
+<p style ="  padding: 12px;">
+
+ لا يوجد وصف</p>
+{% endif %}
+
+
+</div>
+
+
+<div style=" width: 100%; background:#fff;box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;  border: 1px solid #ccc;border-radius: 5px;  ">
+
+
+
+ <style>
+
+form {
+border-radius: 5px;
+}
+.container {border-radius: 5px;
+  padding: 20px;
+  background-color: #fff;
+}
+input[type=text], input[type=submit] {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+
+
+input[type=checkbox] {
+  margin-top: 16px;
+}
+
+input[type=submit] {
+  background-color: #d1c091;
+  color: white;
+  border: none;
+}
+
+input[type=submit]:hover {
+  opacity: 0.8;
+}
+</style>
+
+
+
+
+  <form method="post">
+
+    <h2 style="  text-align: center;"> احجز الان</h2>
+
+
+
+  <div class="container" style="background-color:white">
+
+      {% csrf_token %}
+      {{ form.as_p }}
+
+
+  </div>
+
+  <div class="container">
+    <input type="submit" value="احجز">
+  </div>
+</form>
+
+
+
+
+</div>
+
+
+
+
+
+{% if service.long_image%}
+
+<div style=" width: 100%; background:#fff;box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;  border: 1px solid #ccc;border-radius: 5px; margin-top: 15px; ">
+
+{% if service.long_image %}
+<img   src="{{ service.long_image.url }}" alt="{{ service.Title }}" style="width:100%;border-radius:  5px 5px  0px 0px ; ">
+
+<div  style=" width: 50%; margin: auto;  margin-top: 10px; ">
+
+     <button class="add-to-cart"  id='add-to-cart-btn'   data-id="{{ service.id }}"  style="    border: 1px solid #ccc;box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;">
+  <span>  إضافة للسلة</span>
+</button>
+</div>
+
+{% endif %}
+
+</div>
+
+{% else %}
+{% endif %}
+
+
+<style type="text/css">
+/* .section-header:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #e5e5e5;
+    z-index: 0;
+    width: 99%;
+} */
+
+.section--title{
+margin-right: 15px;
+text-align: center;
+
+}
+
+.divider {
+  width: 150px;
+  height: 5px;
+  background-color: #d1c091;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+
+</style>
+
+
+
+<div class="section-header "><br>
+<h2 class="section--title"><span> منتجات قد تعجبك </span></h2>
+
+<hr class="divider">
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+
+
+
+
+.Container{
+
+    /* background-color: lightgreen; */
+      width: 99%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-content: flex-start;
+    margin: auto;
+    min-height: 30em;
+    padding: 3em 1em 1em 1em;
+    box-sizing: border-box;
+}
+
+/* Card Styling */
+.card-div{    border: 1px solid #ccc;
+    width: 20em;
+    min-height: 20em;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    background-color: var(--card-main-color);
+    margin: 0.6em;
+    box-sizing: border-box;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: transform 0.2s ease-in-out;
+     border-radius: 8px ;
+}
+
+/* ======== General styling of all cards and heart divs ========== */
+.img-div{
+    width: 100%;
+    height: 8em;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: 1rem;
+    z-index: 1;
+    border-radius: 0 0 10px 10px;
+}
+
+.img-div img{
+    transform-origin: bottom;
+    transform: translateY(7.5%);
+    transition: transform 0.3s ease-in-out
+}
+
+
+
+/* God of war image and heart-background*/
+.gow-img-div{
+    background-color: var(--card-1-secondary-color);
+}
+
+.gow-img-div img{
+    width: 100%;
+    border-radius: 8px 8px  0px  0px ;
+
+    /* background-color: whitesmoke; */
+}
+
+
+
+/* ======== text Container Styling general ======== */
+
+.text-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* background-color: yellow; */
+    padding: 0 1.5em;
+
+    padding-bottom: 1em;
+    box-sizing: border-box;
+}
+
+.text-container .item-name,
+.text-container .date{
+    margin: 0.25em 0;
+    text-align: center;
+}
+
+.text-container .item-name{
+    font-size: 1em;
+    font-weight: var(--title-font-weight);
+    color: var(--heading-color);
+}
+
+.text-container .date{
+    font-size: 0.9em;
+    font-weight: var(--date-font-weight);
+    color: var(--date-text-color);
+}
+
+/* === Pricing and cart div  ===== */
+.pricing-and-cart{
+    /* background-color: wheat; */
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0.25em 0 1em 0;
+}
+
+.pricing{
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+
+
+.current-price{
+    color: var(--current-price-text-color);
+    font-size: 1.3rem;
+    font-weight: var(--pricing-font-weight);
+    /* background-color: yellow; */
+    margin: 0;
+
+  color: #d1c091;;
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: .5rem;
+
+}
+
+.pricing-and-cart{
+    width: 100%;
+}
+
+.fa-shopping-cart{
+    font-size: 1rem;
+    top: 0;
+    color: #d1c091;
+    padding:  3px ;
+    color:#fff;
+}
+.add-to-cart{
+  background-color:  #d1c091; /* orange color */
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding:  5px    ;
+  transition: 0.3s;
+  font-size: 8px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  color: #fff;
+
+}
+
+/* ====== Hover effects ======= */
+.card-div:hover .img-div img{
+    transform: translateY(7.5%) scale(1.2);
+}
+
+.card-div:hover{
+    transform: translate(0, -10px);
+}
+
+
+a {
+  color: #d1c091;/* Set link color */
+  text-decoration: none; /* Remove underline */
+  font-weight: bold; /* Set font weight */
+}
+
+a:hover {
+
+  /* text-decoration: underline; /* Add underline on hover */ */
+}
+.fa-shopping-cart:hover {
+
+}
+
+.add-to-cart:hover {
+  transform: translateY(10%);
+}
+</style>
+
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+
+
+
+    <div class="Container">
+
+
+      {% for service in services_in_category %}
+        <div class="card card-div">
+          <a href="{% url 'webs:service' web.slug category.id service.id %}">
+
+
+            <div class="gow-img-div">
+              {% if service.Image %}
+                <img src="{{ service.Image.url }}" alt="{{ service.Title }}">
+              {% endif %}
+            </div>
+          </a>
+          <div class="text-container">
+      <a href="{% url 'webs:service' web.slug category.id service.id %}">
+              <h2 class="item-name">{{ service.Title }}</h2>
+            </a>
+            <div class="pricing-and-cart">
+              <div class="pricing">
+                <p class="current-price">{{ service.price }} ر.س</p>
+              </div>
+              <button class="add-to-cart" data-id="{{ service.id }}">
+              إضافة للسلة    <i class="fas fa-shopping-cart"  ></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+   </div>
+
+
+
+
+
+
+
+
+
+
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var img = document.getElementById("myImg");
+var modalImg = document.getElementById("img01");
+var captionText = document.getElementById("caption");
+img.onclick = function(){
+  modal.style.display = "block";
+  modalImg.src = this.src;
+  captionText.innerHTML = this.alt;
+}
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+</script>
+
+
+
+<a class="button-card" href="{% url 'webs:cart_and_checkout' web.slug  %}">
+<button class="notification-button">
+<img src="{% static 'images/card.png' %}" alt="Image Description" class="notification-icon">
+  {% if cart_item_count %}
+<span class="notification-number"><span id="cart-count">
+
+    {{ cart_item_count }}
+  {% else %}
+    <!-- 0 -->
+  {% endif %}
+</span>
+</button>
+</a>
+
+
+
+<div class="floating_btn"id="whatsapp-button"> <a target="_blank" href="https://wa.me/{{web.Whatsapp}}  ">
+        <div class="contact_icon"> <i class="fab fa-whatsapp my-float"></i> </div>
+    </a> </div>
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+$(document).ready(function() {
+  $('#whatsapp-button').click(function() {
+    $.ajax({
+      url: '{% url "webs:increment_click_whatsapp" service_id=service.id %}',
+      method: 'POST',
+      data: {
+        'csrfmiddlewaretoken': '{{ csrf_token }}',
+      },
+      success: function(response) {
+        // Update the service object in the current page with the new click count
+        $('#click-whatsapp-count').text(response.click_whatsapp);
+      },
+    });
+  });
+});
+</script>
+
+
+{% endblock %}

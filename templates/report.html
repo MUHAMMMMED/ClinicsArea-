@@ -1,0 +1,805 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+
+<div style=" width: 90%; height: 1000px;margin: 10% auto;
+
+padding-bottom: 50px;">
+
+
+
+     <style>
+
+
+
+.row0 {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  margin: 0 -16px;
+  display: flex;
+  justify-content: center;
+}
+
+.col-25 {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+}
+
+.col-50 {
+  -ms-flex: 50%; /* IE10 */
+  flex: 50%;
+}
+
+.col-75 {
+  -ms-flex: 75%; /* IE10 */
+  flex: 75%;
+}
+
+.col-25,
+.col-50,
+.col-75 {
+  padding: 0 16px;
+}
+
+.container {
+  background-color: #f2f2f2;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+}
+
+input[type=text] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.icon-container {
+  margin-bottom: 20px;
+  padding: 7px 0;
+  font-size: 24px;
+}
+
+.btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.btn:hover {
+  background-color: #45a049;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+/*@media (max-width: 800px) {
+  .row {
+    flex-direction: column-reverse;
+  }
+  .col-25 {
+    margin-bottom: 20px;
+  }
+}*/
+</style>
+		<section>
+
+
+
+
+
+           <style>
+
+
+
+
+
+      input[type=text] {
+        width: 100%;
+        margin-bottom: 20px;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+      }
+
+      label {
+        margin-bottom: 10px;
+        display: block;
+      }
+
+      .icon-container {
+        margin-bottom: 20px;
+        padding: 7px 0;
+        font-size: 24px;
+      }
+
+      .btn {
+        background-color: #04AA6D;
+        color: white;
+        padding: 12px;
+        margin: 10px 0;
+        border: none;
+
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 17px;
+      }
+
+      .btn:hover {
+        background-color: #45a049;
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           * {
+             box-sizing: border-box;
+           }
+
+           form{
+             padding: 15px;
+
+            width: 100%;
+           background-color: #fff;
+             border: 1px solid #ccc;
+             border-radius: 8px;
+
+
+           }
+
+
+           .form-group {
+             margin-bottom: 10px;
+
+
+           }
+
+           label {
+             display: block;
+             margin-bottom: 5px;
+             font-weight: bold;
+             text-align: center;
+           }
+
+           select,
+           input[type="number"],
+           input[type="time"],
+           input[type="date"]{
+             width: 100%;
+             padding: 10px;
+             border: 1px solid #ccc;
+             border-radius: 5px;
+             font-size: 16px;
+             line-height: 1.5;
+           }
+
+           .form-group-inline {
+             display: inline-block;
+
+
+             width: 24%;
+           }
+
+           .form-group-inline1 {
+             display: inline-block;
+
+
+             width: 32.8%;
+           }
+           .form-group-buttons {
+             display: flex;
+             justify-content: space-between;
+           }
+
+           .submit ,
+           .reset   {
+             width: 48%;
+             padding: 10px;
+             border: none;
+             border-radius: 5px;
+             font-size: 16px;
+             font-weight: bold;
+             color: #fff;
+             background-color:var(--primary-color);
+             cursor: pointer;
+           }
+           .submit:hover ,
+           .reset:hover {
+             background-color: var(--primary-color);
+           }
+            .search{    width: 100%;
+
+             padding: 10px;
+             border: none;
+             border-radius: 5px;
+             font-size: 16px;
+             font-weight: bold;
+             color: #fff;
+             background-color:var(--primary-color);
+             cursor: pointer;
+
+                }
+            .button{
+             padding: 10px;
+             border: none;
+             border-radius: 5px;
+             font-size: 16px;
+             font-weight: bold;
+             color: #fff;
+             background-color:var(--primary-color);
+             cursor: pointer;
+
+                }
+
+      .Analytics-card-dash{
+        position: relative;
+        float: right;
+        background-color: #fff;
+        width: 49%;
+         margin-bottom : 25px;
+         padding: 20px;
+         border-radius: 8px;
+      /*    margin-top: 50px;*/
+       border: 1px solid #ccc;
+
+      margin :  0.5%;
+        }
+
+       @media only screen and (max-width: 600px) {
+             .form-group-inline {  width: 100%;display: block; margin-right: 0;
+
+
+
+             }
+             .form-group-inline1 {
+               width: 100%;
+               display: block;
+               margin-right: 0;
+             }
+
+
+             .reset  { display: none;
+               width: 100%;
+               margin-top: 10px;
+             }
+
+             .submit {
+               width: 100%;
+               margin-top: 10px;
+             }
+
+
+
+            .search{   width: 100%;margin-top: 10px;  }
+
+
+      .button{    width: 100%; margin-top: 10px;   }
+              .Analytics-card-dash{background-color: #fff; width: 100%;margin-bottom : 25px; position: relative; border: 1px solid #ccc; }
+
+           }
+
+
+      </style>
+
+
+
+      <form method="get" id="search">
+      {% csrf_token %}
+
+
+       <div class="form-group form-group-inline1">
+         <label for="start_date">Start Date </label>
+         <input type="date" name="start_date" value="{{ start_date }}">
+              </div>
+              <div class="form-group form-group-inline1">
+                <label for="end_date">End Date </label>
+                <input type="date" name="end_date" value="{{ end_date }}">
+                     </div>
+
+
+                   <div class="form-group form-group-inline1">
+           <button type="submit"onclick="clearForm()" class="search">Search</button>   </div>
+
+
+       </form>
+
+
+
+
+		</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <style media="screen">
+   main {
+ margin: 20px;
+}
+
+section {
+ margin-bottom: 40px;
+}
+
+h2 {
+ font-size: 24px;
+ margin-top: 40px;
+ margin-bottom: 20px;
+}
+
+p {
+ margin-bottom: 20px;
+ line-height: 1.5;
+}
+
+table {
+ border-collapse: collapse;
+ width: 100%;
+ margin-bottom: 40px;
+}
+
+th, td {
+ padding: 10px;
+ text-align: right;
+}
+
+th {
+ background-color: #ddd;
+}
+
+tr {
+ background-color: #f2f2f2;
+  margin-top: 10px;
+}
+  </style>
+
+
+	<header>
+		<h1>تقرير</h1>
+		<!-- <p>تم إنشاؤه في 27 مايو 2023
+
+</p> -->
+	</header>
+
+
+
+
+  <style media="screen">
+    section {
+      background-color: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+    .visits-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background-color: #f8f8f8;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 10px;
+      margin-bottom:50px;
+    }
+
+    .visits-item {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .visits-label{
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .visits-value {  color:#7e91dc;
+      font-size: 16px;  font-weight: bold;
+    }
+
+    @media only screen and (min-width: 768px) {
+      .visits-container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .visits-item {
+        flex-direction: row;
+        gap: 20px;
+      }
+
+      .visits-label {
+        font-size: 20px;
+      }
+
+      .visits-value {  font-weight: bold;
+        color:#7e91dc;
+        font-size: 18px;
+      }
+    }
+
+  </style>
+
+
+
+
+  {% if message %}
+    <p>{{ message }}</p>
+  {% else %}
+    <!-- Rest of the template for the report -->
+    <!-- ... -->
+  {% endif %}
+
+
+
+	<main>
+		<section>
+			<h2>مقدمة</h2>
+			<p>   المقدمة خلال فترة زمنية محددة. يتم ذلك من خلال تحليل بعض المؤشرات الهامة مثل عدد الزيارات للموقع، وعدد الحجوزات التي تم إجراؤها خلال الفترة الزمنية، وعدد النقرات على زر الواتساب، وعدد مشاهدات الصفحات لكل فئة من الفئات المتاحة على الموقع.
+
+سيتم عرض هذه المؤشرات بشكل مفصل في التقرير، بالإضافة إلى بعض الإحصائيات الأخرى المهمة التي تساعد على فهم أداء الموقع وتحديد المجالات التي يمن الممكن تحسينها. وبناءً على هذه البيانات، يمكن اتخاذ قرارات استراتيجية لتحسين أداء الموقع وزيادة عدد المستخدمين والحجوزات.
+
+يتم إعداد هذا التقرير لصاحب الموقع ولفريق العمل، ويمكن استخدامه كأداة لتحسين جودة الخدمة ورفع مستوى الرضا لدى العملاء. نأمل أن يكون هذا التقرير مفيدًا ومفصلًا، ويساعد على فهم أداء الموقع بشكل أفضل واتخاذ الإجراءات اللازمة لتحسينه.    </p>
+		</section>
+
+	  {% for web in web %}	<section>
+			<h2>نتائج</h2>
+
+
+			<table>
+
+				<tbody>
+
+          <tr>
+            <td>  اجمالى الزيارات الموقع       </td>
+            <td>{{total_views}}</td>
+
+          </tr>
+
+          <tr>
+						<td>  اجمالى  الحجز  </td>
+						<td>{{ web.views_confirmation }}</td>
+
+					</tr>
+
+
+					<tr>
+						<td>   إجمالي نقرات الواتساب      </td>
+						<td>{{total_clicks}}</td>
+
+					</tr>
+
+
+
+				</tbody>
+			</table>
+		</section>  {% endfor %}
+
+
+
+
+
+
+
+
+		<section>
+			<h2>   نتائج الفئة</h2>
+
+
+
+<!-- <p>total_categories_clicks: {{total_categories_clicks}}</p>
+<p>total_categories_views: {{total_categories_views}}</p>
+<p>Total Category Views: {{total_categories_views}}</p> -->
+			<table>
+				<thead>
+					<tr>
+						<th>فئة</th>
+
+            <th> مشاهدات الصفحة</th>
+          <th> نقرات الواتساب  </th>
+          	<th>  الحجز  </th>
+					</tr>
+				</thead>
+				<tbody>
+{% for web in web %}
+
+
+
+<tr>
+  <td> الصفحه الرئيسيه </td>
+  <td>{{ web.views }}</td>
+  <td>{{ web.Click_whatsapp }}</td>
+  <td> </td>
+</tr>
+<tr>
+  <td>السله</td>
+  <td>{{ web.views_checkout }}</td>
+  <td> </td>
+  <td> </td>
+</tr>
+
+
+          <tr>
+            <td>العروض المجمعه</td>
+            <td>{{ web.views_Categories }}</td>
+            <td>{{ web.Click_whatsapp_Categories }}</td>
+            <td> </td>
+          </tr>
+
+  {% endfor %}
+
+          {% for category in categories %}
+
+            <tr>
+              <td> {{ category.Name }}</td>
+
+
+              <td>    {% if category.views is not None %}
+                {{ category.views }}
+                  {% else %}
+                      0
+                  {% endif %} </td>
+
+
+
+
+
+
+
+              <td>
+                  {% if category.Click_whatsapp is not None %}
+                      {{ category.Click_whatsapp }}
+                  {% else %}
+                      0
+                  {% endif %}
+              </td>
+
+
+
+
+                            <td>
+     {{ category.appointment_count }}
+
+                            </td>
+
+
+
+
+
+
+
+            </tr>
+
+
+
+
+
+
+          {% endfor %}
+
+
+
+				</tbody>
+			</table>
+		</section>
+
+
+
+  		<section>
+  			<h2>نتائج العروض</h2>
+
+
+<!-- <h2>Services</h2>
+<p>Total Service Clicks: {{total_services_clicks}}</p>
+<p>Total Service Views: {{total_services_views}}</p> -->
+
+  			<table>
+  				<thead>
+  					<tr>
+  						<th> العروض</th>
+              	<th> مشاهدات الصفحة</th>
+  						<th> نقرات الواتساب  </th>
+  						<th>  الحجز  </th>
+
+
+
+  					</tr>
+  				</thead>
+
+
+  				<tbody>
+
+  {% for service in services %}
+
+  					<tr>
+  						<td>{{ service.Title }}</td>
+
+
+
+  						<td>    {% if service.views is not None %}
+                {{ service.views }}
+                  {% else %}
+                      0
+                  {% endif %} </td>
+
+
+              <td>
+                  {% if service.Click_whatsapp is not None %}
+                  {{ service.Click_whatsapp }}
+                  {% else %}
+                      0
+                  {% endif %}
+              </td>
+
+
+
+              <td>
+
+                      {{ service.appointment_count }}
+              </td>
+
+
+
+
+
+
+
+
+
+
+
+
+  					</tr>
+{% endfor %}
+
+
+
+
+
+
+  				</tbody>
+  			</table>
+  		</section>
+
+      <section>
+        <h2>ملخص
+    </h2>
+        <p>
+
+
+          ملخص لمحتوى التقرير
+
+          تقرير الأداء الذي تم إعداده يهدف إلى تقييم أداء موقع الويب والخدمات المقدمة خلال فترة زمنية محددة. وقد تم تحليل عدد الزيارات للموقع، وعدد الحجوزات التي تم إجراؤها خلال الفترة الزمنية، وعدد النقرات على زر الواتساب، وعدد مشاهدات الصفحات لكل فئة من الفئات المتاحة على الموقع، والإحصائيات الأخرى المهمة التي تساعد على فهم أداء الموقع وتحديد المجالات التي يمكن تحسينها.
+
+          وبناءً على هذه البيانات، يمكن اتخاذ قرارات استراتيجية لتحسين أداء الموقع وزيادة عدد المستخدمين والحجوزات. يتم إعداد هذا التقرير لصاحب الموقع ولفريق العمل، ويمكن استخدامه كأداة لتحسين جودة الخدمة ورفع مستوى الرضا لدى العملاء.
+
+          يمكن استخدام التقرير لتحديد الفئات التي تحتاج إلى تحسين وتحسين تجربة المستخدم وتعزيز الحجوزات. كما أنه يوفر فهمًا أعمق للأنشطة التي يقوم بها المستخدمون على الموقع، مما يساعد على تطوير محتوى الموقع وتحسين تصميمه.
+
+          يمكن استخدام هذا التقرير لتحليل الأداء على فترات زمنية مختلفة وتحديدالتغيرات التي حدثت في أداء الموقع على مر الزمن. ويمكن أيضًا استخدامه لمقارنة أداء الموقع بين مختلف الفئات والخدمات المقدمة.
+
+          بشكل عام، يمكن الاستفادة من هذا التقرير لتحسين أداء الموقع وجعله يلبي احتياجات المستخدمين ويساهم في زيادة عدد الحجوزات والربحية. ويعد هذا التقرير أداة قيمة لفهم أداء الموقع واتخاذ القرارات اللازمة لتحسينه.
+
+
+    </p>
+      </section>
+
+  		<section>
+  			<h2>خاتمة</h2>
+  			<p>بناءً على النتائج ، يمكننا أن نستنتج أن ...
+
+  </p>
+
+<p>بناءً على النتائج التي تم عرضها في التقرير، يتبين أن هناك بعض المجالات التي يمكن تحسينها في أداء الموقع وزيادة عدد الحجوزات. على سبيل المثال، يمكن تحسين تجربة المستخدم عند التصفح والحجز، وتحسين تصميم بعض الصفحات لجعلها أكثر جاذبية وسهولة في الاستخدام.
+
+كما يمكن تحسين الجودة والتنوع في المحتوى المقدم على الموقع، وزيادة الدعاية والإعلان للخدمات والعروض المتاحة. وعلاوة على ذلك، يمكن تحسين الدعم الفني وخدمة العملاء لزيادة مستوى الرضا لدى العمستخدمين وتحفيزهم على استخدام الموقع وإجراء الحجوزات.
+
+بالإضافة إلى ذلك، يمكن الاستفادة من التقرير لتحليل أسباب تراجع الأداء في بعض الفترات الزمنية واتخاذ الإجراءات اللازمة لتفادي هذا التراجع في المستقبل. ويمكن أيضًا استخدام التقرير لمقارنة أداء الموقع بين فترات زمنية مختلفة وتحديد التغيرات التي حدثت في أداء الموقع على مر الزمن.
+
+نحن نعتقد أن هذا التقرير سيكون أداة قيمة لفهم أداء الموقع واتخاذ القرارات اللازمة لتحسينه وزيادة عدد الحجوزات والربحية. ونحن نوصي بتنفيذ بعض التحسينات المقترحة في هذا التقرير لتحسين تجربة المستخدم وزيادة عدد الحجوزات. وسنعمل مع صاحب الموقع وفريق العمل على تنفيذ هذه التحسينات ومتابعة أداء الموقع على مر الزمن.
+
+نود أن نشكركم على ثقتكم وتعاونكم معنا في إعداد هذا التقرير. ونتطلع إلى العمل معكم لتحقيق الأهداف المشتركة وتحسين أداء الموقع وجودة الخدمة المقدمة.</p>
+
+  		</section>
+		<section>
+      <button class="search" onclick="window.print()">Print</button>	</section>
+  	</main>
+
+
+      	<!-- <main>
+      		<section>
+      			<h2>مقدمة</h2>
+      			<p>العميل مهم جدا ، العميل سيتبعه. لكن هذه هي ميزة حياة لاسينيا.</p>
+      		</section>
+      		<section>
+      			<h2>ملخص
+      </h2>
+      			<p>هنا ملخص لمحتوى التقرير.
+
+      </p>
+      		</section>
+      		<section>
+      			<h2>نتائج</h2>
+
+
+
+
+
+      			<table>
+      				<thead>
+      					<tr>
+      						<th>فئة</th>
+      						<th>نقرات</th>
+      					</tr>
+      				</thead>
+      				<tbody>
+      					<tr>
+      						<td>Category 1</td>
+      						<td>10</td>
+      					</tr>
+      					<tr>
+      						<td>Category 2</td>
+      						<td>15</td>
+      					</tr>
+      					<tr>
+      						<td>Category 3</td>
+      						<td>5</td>
+      					</tr>
+      				</tbody>
+      			</table>
+      		</section>
+      		<section>
+      			<h2>خاتمة</h2>
+      			<p>بناءً على النتائج ، يمكننا أن نستنتج أن ...
+
+      </p>
+      		</section>
+      	</main> -->
+
+    {% endblock %}

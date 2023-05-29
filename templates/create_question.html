@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #fff;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color:  #fff;
+}
+
+/* Set a style for all buttons */
+.buttonform {
+  background-color: #7e91dc;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.buttonform:hover {
+  opacity: 0.8;
+}
+
+
+
+</style>
+
+
+
+<br><br><br>
+
+
+
+<br><br>
+<h2 style="color: #695CFE; text-align:center;"> {{title}}     </h2><br>
+  <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+
+
+    <div style="width: 99%; margin: auto;">
+
+
+
+
+
+
+    <h2 style="color: #5a5a5a;
+        font-size: 24px;
+      <br>      <br>
+        margin-bottom: 1rem;"> السؤال</h2>
+
+{{ form.question  }}
+      <br>      <br>
+
+      <h2 style="color: #5a5a5a;
+          font-size: 24px;
+        <br>      <br>
+          margin-bottom: 1rem;">  الاجابة</h2>
+
+  {{ form.answer  }}
+
+    <div>
+
+
+
+
+
+        <br>
+
+        <style media="screen">
+          .btn_submit {
+         background-color: var(--primary-color);
+          color: white;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          width: 100%;
+        }
+        </style>
+
+          <button class="btn_submit" type="submit">Save</button>
+            <br>
+            <br>
+            <br>
+            <br>
+
+        </form>
+
+{% endblock %}

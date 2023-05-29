@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Homepage</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+
+<style media="screen">
+  body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+
+
+background-color: #F6F5FF;
+
+
+}
+
+header {
+  background-color: #695CFE;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-button {
+  background-color: #695CFE;
+  color: #fff;
+  border: none;
+  padding: 20px;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 6px #7e91dc;
+}
+
+.login-button:hover {
+  background-color: #695CFE;
+  box-shadow: 0 4px  #7e91dc;
+  transform: translateY(2px);
+}
+@media screen and (max-width: 600px) {
+  header {
+    padding: 10px;
+    font-size: 24px;
+  }
+
+  .container {
+    flex-direction: column;
+    padding: 50px;
+  }
+
+  .login-button {
+    margin-top: 20px;
+      padding: 50px;
+      font-size: 50px;
+  }
+}
+</style>
+
+<body>
+  <header>
+    <h1>Welcome </h1>
+  </header>
+  <div class="container">
+
+
+
+
+
+
+    {% if user.is_authenticated%}
+
+
+
+
+     <a href="{% url 'User:logout' %}"><button class="login-button"> تسجيل خروج</button> </a>
+
+
+
+    {% else %}           <a  href="{% url 'User:login' %}">   <button class="login-button">Login</button></a>
+
+
+              {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</body>
+</html>

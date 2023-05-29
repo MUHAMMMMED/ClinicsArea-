@@ -1,0 +1,1585 @@
+<!-- Coding by CodingLab | www.codinglabweb.com -->
+<!DOCTYPE html>
+<html dir="rtl" lang="ar"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+   <!----======== CSS ======== -->
+    <link rel="stylesheet" href="style.css">
+<!--         <link rel="stylesheet" href="profile.css"> -->
+       <link rel="stylesheet" href="DRappointment.css">
+    <!----===== Boxicons CSS ===== -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'> 
+    <title>CRM</title> 
+</head>
+<body>
+
+
+    <nav class="sidebar close" >
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="logo.png" alt="">
+                </span>
+
+                <div class="text logo-text">
+                    <span class="name">Codinglab</span>
+                    <span class="profession">Web developer</span>
+                </div>
+            </div>
+
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+
+                <li class="search-box">
+                    <i class='bx bx-search icon'></i>
+                    <input type="text" placeholder="Search...">
+                </li>
+
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-home-alt icon' ></i>
+                            <span class="text nav-text">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-bar-chart-alt-2 icon' ></i>
+                            <span class="text nav-text">Revenue</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-bell icon'></i>
+                            <span class="text nav-text">Notifications</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-pie-chart-alt icon' ></i>
+                            <span class="text nav-text">Analytics</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-heart icon' ></i>
+                            <span class="text nav-text">Likes</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-wallet icon' ></i>
+                            <span class="text nav-text">Wallets</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+                <li class="">
+                    <a href="#">
+                        <i class='bx bx-log-out icon' ></i>
+                        <span class="text nav-text">Logout</span>
+                    </a>
+                </li>
+
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+                    <span class="mode-text text">Dark mode</span>
+
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+                
+            </div>
+        </div>
+
+    </nav>
+
+    <section class="home">
+
+ <!-- ----------------------dropdown---------------------------------- -->
+  
+ 
+  <!-- ----------------------  end---------------------------------- -->
+
+ 
+
+ 
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+ 
+ 
+ 
+
+<form  >
+ 
+  <div class="container" >
+    <input type="text" placeholder="Name" name="name" >
+    <input type="text" placeholder="Email address"  >
+     <input type="text" placeholder="Name" name="name" >
+    <input type="text" placeholder="Email address"  >
+  </div>
+
+  <div class="container">
+    <input type="submit" value="بحث">
+  </div>
+</form>
+
+  
+ 
+</div>
+
+ 
+  
+<div  class="page">
+    
+  
+
+
+
+  <!-- ----------------------  waiting--------------------------------- -->
+
+ 
+
+
+
+
+
+
+  <!-- ----------------------  --------------------------------- -->
+
+ 
+
+
+<!-- <div style=" position: relative; padding-bottom: 150px;">  
+<ul class="breadcrumb">
+ <li style="color: var(--text-color);">  الحجوزات </li>
+<li style="color: var(--text-color);"> الانتظار</li>
+</ul></h3>  </div>
+</div>
+<br>  -->
+
+  <!-- ---------------------- Calendar --------------------------------- -->
+ <div style="width: 100%;margin:auto; margin-top: 50px; display: none; "id='calender'>
+
+
+
+
+<div class="Calendar" id="calender"  >   
+  
+<div class="month">      
+  <ul>
+<!--     <li class="prev">&#10094;</li>
+    <li class="next">&#10095;</li> -->
+    <li>
+      August<br>
+      <span style="font-size:18px">2021</span>
+    </li>
+  </ul>
+</div>
+
+<ul class="weekdays">
+  <li>Mo</li>
+  <li>Tu</li>
+  <li>We</li>
+  <li>Th</li>
+  <li>Fr</li>
+  <li>Sa</li>
+  <li>Su</li>
+</ul>
+
+<ul class="days">  
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+  <li>4</li>
+  <li>5</li>
+  <li>6</li>
+  <li>7</li>
+  <li>8</li>
+  <li>9</li>
+  <li>
+    <span class="badge" style="
+
+                 font-size: 12px;
+
+                 top:  20px;
+                 left:  0px;
+                 padding: 1px 10px;
+                 border-radius: 50px;
+                 background-color: var(--primary-color);
+                 color: white;
+ 
+                 " > ok</span><br>
+   <span>10</span>
+ 
+  </li>
+  <li>11</li>
+  <li>12</li>
+  <li>13</li>
+  <li>14</li>
+  <li>15</li>
+  <li>16</li>
+  <li>17</li>
+  <li>18</li>
+  <li>19</li>
+  <li>20</li>
+  <li>21</li>
+  <li>22</li>
+  <li>23</li>
+  <li>24</li>
+  <li>25</li>
+  <li>26</li>
+  <li>27</li>
+  <li>28</li>
+  <li>29</li>
+  <li>30</li>
+  <li>31</li>
+</ul>
+
+</div></div>
+ 
+
+
+ 
+
+
+
+  <!-- ---------------------- dask --------------------------------- -->
+
+
+<div class="dask">
+
+ 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="#" class="notification">
+<!--   <span>Inbox</span> -->
+  <span class="badge">3</span>
+</a>
+
+
+        <div class="text">appointment</div>
+
+
+
+
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'waiting ')">
+
+
+
+
+
+  انتظار
+ 
+  <samp style=" background-color: var(--primary-color);
+     
+ margin-right: 5px;
+        color: #fff;
+        border-radius: 50px;
+        font-size:10px;   padding:2px 6px 2px 6px  ;
+      ">55</samp>
+
+</button>
+
+  <button class="tablinks" onclick="openCity(event, 'missedappointment')"> عدم الرد
+  <samp style=" background-color: var(--primary-color);
+     
+ margin-right: 5px;
+        color: #fff;
+        border-radius: 50px;
+        font-size:10px;  padding:2px 6px 2px 6px ;
+      ">555</samp>
+  </button>
+
+
+
+  <button class="tablinks" onclick="openCity(event, 'Unconfirmedbooking')">حجز غير مؤكد
+
+      <samp style=" background-color: var(--primary-color);
+     
+ margin-right: 5px;
+        color: #fff;
+        border-radius: 50px;
+        font-size:10px; padding:2px 6px 2px 6px  ;
+      ">555</samp>
+  </button>
+
+
+
+ 
+
+
+ 
+
+
+</div>
+
+
+
+
+
+
+<div style="width: 100% ;   float: right; ">
+<div style="width:50%;  float: right; ">
+<h3 style="text-align: right;">
+<ul class="breadcrumb">
+ <li style="color: var(--text-color);">  الحجوزات </li>
+<li style="color: var(--text-color);"> الانتظار</li>
+</ul></h3> </div> 
+<div style="width:50%; float: right;  ">
+
+<div style="width:110px; float: left; padding-top: 15px;margin-left: 8px;    ">
+<button class="btn info"  onclick="myCalendar()"> Calendar </button>
+</div>
+
+<div style="width:110px; float: left; padding-top: 15px;margin-left: 8px;    ">
+ 
+
+<button class="btn info" onclick="openNav()" > بحث </button>
+
+ 
+</div>
+
+<!-- <div style="width:110px; float: left; padding-top: 15px;margin-left: 8px;    ">
+<button class="btn info">إضافة حجز  </button>
+</div> -->
+</div></div> <br>
+
+<div style="overflow-x:auto;   padding: 15px;border-radius: 10px; padding-bottom: 300px; ">
+<table class="tablecard" >
+ <tr style=" margin : 15px; ">
+ <th style="border-radius: 0px 20px 0px 0px;color:var(--primary-color);background-color: #fff;padding: 10px;">  تاريخ الإنشاء</th>
+
+ <th style="color:var(--primary-color);background-color: #fff;padding: 10px;"> الاسم</th>
+ <th style="color:var(--primary-color);background-color: #fff;padding: 10px;"> رقم الجوال </th>
+ <th style="color:var(--primary-color);background-color: #fff;padding: 10px;"> التاريخ</th>
+ <th style="color:var(--primary-color);background-color: #fff;padding: 10px;"> الميعاد </th>
+ <th style="color:var(--primary-color);background-color: #fff;padding: 10px;"> الملف الشخصي </th>
+ <th style="color:var(--primary-color);background-color: #fff;padding: 10px;"> حاله الحجز</th>
+ <th style="border-radius:20px  0px 0px 0px;color:var(--primary-color); background-color: #fff; padding: 10px;">عرض التذكره</th>
+  </tr>
+  <!-- ----------------------   --------------------------------- -->
+
+
+
+
+<tr>
+<td class="tdcard">٢٢‏/٠١‏/٢٠٢٣</td>
+<td class="tdcard" > Smith</td>
+<td class="tdcard" > 041858474/87</td>
+<td class="tdcard" > ٢٢‏/٠١‏/٢٠٢٣</td>
+<td class="tdcard" > 05:20</td>
+
+<td class="tdcard">
+  <a href=""> 
+<i class="bx bx-user-circle toggle"  id="spoticoncard"  ></i></a>
+
+
+
+
+
+
+
+
+</td> 
+
+
+<td class="tdcard"> 
+  <!--       <samp  class="spotcard">ا
+
+
+        نتظار
+
+
+
+      </samp>   
+ -->
+
+<form   action="" method="post">
+
+<!--
+       <label class="switch">
+         <input type="checkbox">
+         <span class="slider"></span>
+       </label> -->
+
+   <label class="switch">
+         <input type="checkbox" checked>
+         <span class="slider"></span>
+       </label>
+</form><!--
+       <label class="switch">
+         <input type="checkbox">
+         <span class="slider round"></span>
+       </label> -->
+
+       <!-- <label class="switch">
+         <input type="checkbox" checked>
+         <span class="slider round"></span>
+       </label> -->
+  </td>
+<!--  -->
+<td class="tdcard"><samp onclick="document.getElementById('id01').style.display='block'" >
+<i class="bx bx-detail toggle"  id="spoticoncard"  ></i></samp></td> 
+</tr>
+<!-----------------------------------  -->
+<th style="background-color: #fff;border-radius: 0px 0px  20px  0px; "></th>
+<th style="padding: 20px; background-color: #fff;"></th>
+<th style="padding: 20px; background-color: #fff;"></th>
+<th style="padding: 20px; background-color: #fff;"></th>
+<th style="padding: 20px; background-color: #fff;"></th>
+<th style="padding: 20px; background-color: #fff;"></th>
+<th style="padding: 20px; background-color: #fff;"></th>
+<th style="background-color: #fff;border-radius:  0px 0px  0px  20px; "></th>
+</tr>
+</table></div>
+ <!-- ----------------------  start tk--------------------------------- -->
+<div class="dask" ><div id="id01" class="modal"><div  class="modal-content animate"> <div>
+<div  class="modal-content-tk ">
+<div class="inf-text" style=" font-size: 12px; width: 100%;  ">
+<table style=" font-size: 12px; width: 100%; border-bottom:2px solid var(--primary-color); padding-bottom: 3px; ">
+<tr class="tr" style=" font-size: 13px; width: 100%; ">
+<th class="th"  style=" width: 30%; font-size: 15px;  ">
+<samp style="padding-left: 8px;color: var(--primary-color);"> البيانات الشخصية </samp> <br> 
+</th> <th class="th"  style=" width: 30%;  ">  حاله الحجز :   
+<samp style=" background-color: var(--primary-color); padding:0px 8px 0px 8px  ; color: #fff;  font-size:13px; border-radius: 8px; ">   انتظار    </samp> </th>   
+<td class="td"style=" width:30%; ">  
+<!--     <button class="btn info"style="background-color: var(--primary-color); color: #fff;">الملف الشخصي</button> 
+ --></td></tr></table></div>
+<!-- <div style="width: 100%; border-bottom:   2px solid var(--primary-color); "> </div> -->
+<!-- <div class="inf-text"> <samp style="padding-left: 8px;color: var(--primary-color);"> البيانات الشخصية </samp> <br> 
+</div> -->
+<div class="inf"> 
+<table class="table">
+<tr class="tr">
+<th class="th"><li>  الاسم :</li> </th>
+<td class="td">فيصل</td>
+</tr>
+<tr class="tr">
+<th  class="th"><li> النوع : </li> </th>
+<td class="td">ذكر</td>
+</tr>
+<tr class="tr">
+<th  class="th"> <li>العمر : </li> </th>
+<td class="td">25</td>
+</tr>
+</table>
+</div> 
+<!--  -->
+<div class="inf"> 
+<table class="table">
+<tr class="tr">
+<th  class="th"> <li>تاريخ الانضمام :   </li> </th>
+<td class="td">٢٢‏/٠١‏/٢٠٢٣ </td>
+</tr>
+<tr class="tr">
+<th  class="th"><li> رقم الملف : </li></th>
+<td class="td"> 3434</td>
+</tr>
+<tr>
+<th  class="th"><li>رقم الجوال : </li> </th>
+<td class="td">0246463456</td>
+</tr>
+</table>
+</div>
+<!--  -->
+<div class="inf"> 
+<table class="table">
+<tr class="tr">
+<th  class="th"><li> الدولة :  </li> </th>
+<td class="td"> السعودية</td>
+</tr>
+<tr class="tr">
+<th  class="th"><li> المدينة : </li> </th>
+<td class="td">المدينة المنورة</td>
+</tr>
+<tr class="tr">
+<th class="th"><li>الحي السكني : </li> </th>
+<td class="td"> عسير</td>
+</tr>
+</table>
+</div>
+<div class="inf-text"> <samp style="padding-left: 8px;color: var(--primary-color);">بيانات الحجز  </samp> <br> 
+</div>
+<!--  -->
+<div class="inf"> 
+<table class="table">
+<tr class="tr">
+<th class="th"> <li>تاريخ الإنشاء :   </li> </th>
+<td  class="td"> ٢٢‏/٠١‏/٢٠٢٣ </td>
+</tr>
+<tr class="tr">
+<th class="th"><li> نوع الاتصال :   </li> </th>
+<td class="td"> استقبال المكالمة  </td>
+</tr>
+<tr class="tr">
+<th class="th"><li>حالة الدفع :  </li> </th>
+<td  class="td"> عند استلام الخدمة </td>
+</tr>
+<tr class="tr">
+<th class="th"><li>  كول سنتر :</li> </th>
+<td  class="td"> call center</td>
+</tr>
+</table>
+</div> 
+<!--  -->
+<div class="inf"> 
+<table class="table">
+<tr class="tr">
+<th class="th"><li>  نوع الحجز  </li></th>
+<td class="td">كشف </td>
+</tr>
+<tr class="tr">
+<th class="th"><li>  تاريخ الحجز :   </li> </th>
+<td  class="td">٢٢‏/٠١‏/٢٠٢٣ </td>
+</tr>
+<tr class="tr">
+<th class="th"> <li>  الميعاد :  </li></th>
+<td class="td"> 05:20</td>
+</tr>
+</table>
+</div>
+<div class="inf"> 
+<table class="table">
+<tr class="tr">
+<th class="th"> <li>الفرع  </li></th>
+<td class="td">الفرع 1 </td>
+</tr>
+<tr>
+<th class="th"><li> القسم : </li> </th>
+<td class="td">  الجلدية</td>
+</tr>
+<tr class="tr">
+<th class="th"> <li> التخصص     </li></th>
+<td class="td">جلدية </td>
+</tr>
+<tr class="tr">
+<th class="th"><li>الطبيب : </li>  </th>
+<td class="td"> عبد الفتاح </td>
+</tr>
+</table></div>
+<div class="inf-text"> <samp style="padding-left: 8px;color: var(--primary-color);">  العروض :</samp> <br>  </div>
+<div style="width: 98%;margin:auto; ">
+
+<button  class='buttonoffer'>
+<samp   class='buttonoffersamp1'> تنظيف بشرة </samp>  
+<samp   class='buttonoffersamp2'>
+<samp>555</samp>  <samp>ريال</samp> </samp>  
+</button>
+<button  class='buttonoffer'>
+<samp   class='buttonoffersamp1'> تنظيف بشرة </samp>  
+<samp   class='buttonoffersamp2'>
+<samp>555</samp>  <samp>ريال</samp> </samp>  
+</button>
+<button  class='buttonoffer'>
+<samp   class='buttonoffersamp1'> تنظيف بشرة </samp>  
+<samp   class='buttonoffersamp2'>
+<samp>555</samp>  <samp>ريال</samp> </samp>  
+</button>
+<button  class='buttonoffer'>
+<samp   class='buttonoffersamp1'> تنظيف بشرة </samp>  
+<samp   class='buttonoffersamp2'>
+<samp>555</samp>  <samp>ريال</samp> </samp>  
+</button>
+<button  class='buttonoffer'>
+<samp   class='buttonoffersamp1'> تنظيف بشرة </samp>  
+<samp   class='buttonoffersamp2'>
+<samp>555</samp>  <samp>ريال</samp> </samp>  
+</button>
+<button  class='buttonoffer'>
+<samp   class='buttonoffersamp1'> تنظيف بشرة </samp>  
+<samp   class='buttonoffersamp2'>
+<samp>555</samp>  <samp>ريال</samp> </samp>  
+</button>
+<button  class='buttonoffer'>
+<samp   class='buttonoffersamp1'> تنظيف بشرة </samp>  
+<samp   class='buttonoffersamp2'>
+<samp>555</samp>  <samp>ريال</samp> </samp>  
+</button>
+<button  class='buttonoffer'>
+<samp   class='buttonoffersamp1'> تنظيف بشرة </samp>  
+<samp   class='buttonoffersamp2'>
+<samp>555</samp>  <samp>ريال</samp> </samp>  
+</button>
+<button  class='buttonoffer'>
+<samp   class='buttonoffersamp1'> تنظيف بشرة </samp>  
+<samp   class='buttonoffersamp2'>
+<samp>555</samp>  <samp>ريال</samp> </samp>  
+</button><button  class='buttonoffer'>
+<samp   class='buttonoffersamp1'> تنظيف بشرة </samp>  
+<samp   class='buttonoffersamp2'>
+<samp>555</samp>  <samp>ريال</samp> </samp>  
+</button><button  class='buttonoffer'>
+<samp   class='buttonoffersamp1'> تنظيف بشرة </samp>  
+<samp   class='buttonoffersamp2'>
+<samp>555</samp>  <samp>ريال</samp> </samp>  
+</button><button  class='buttonoffer'>
+<samp   class='buttonoffersamp1'> تنظيف بشرة </samp>  
+<samp   class='buttonoffersamp2'>
+<samp>555</samp>  <samp>ريال</samp> </samp>  
+</button><button  class='buttonoffer'>
+<samp   class='buttonoffersamp1'> تنظيف بشرة </samp>  
+<samp   class='buttonoffersamp2'>
+<samp>555</samp>  <samp>ريال</samp> </samp>  
+</button><button  class='buttonoffer'>
+<samp   class='buttonoffersamp1'> تنظيف بشرة </samp>  
+<samp   class='buttonoffersamp2'>
+<samp>555</samp>  <samp>ريال</samp> </samp>  
+</button>
+</div>
+<div class="inf-text" > <samp style="padding-left: 8px;color: var(--primary-color); ">  ملاحظات :  </samp> <br>  </div>
+<div class="inf-text" style=" font-size: 12px;">
+<table  >
+<tr class="tr" style="">
+<th class="th"  style="width: 130px; ">  <samp style="padding-left: 8px;color: var(--primary-color);  "> <li style="height: 0px;">  ملاحظة المريض :  </li> </samp> </th>
+<td class="td"style="width: 85%; ">    تشقير حواجب</td>
+</tr>
+</table>
+</div>
+<div class="inf-text" style=" font-size: 12px;">
+<table>
+<tr class="tr">
+<th class="th"  style="width: 130px;  ">  <samp style="padding-left: 8px;color: var(--primary-color);"> <li style="height: 0px;">  ملاحظة الفاتورة :  </li> </samp> </th>
+<td class="td"style="width: 85%;">    تشقير حواجب </td>
+</tr>
+</table>
+</div>
+<!--  -->
+<div class="inf "style="width: 100%;  ">
+ <table style="width: 100%; border-bottom:2px solid var(--primary-color); padding-bottom: 8px; ">
+<tr>
+<td class="td" style="width: 100%;  ">
+<div class="inf-text"> <samp style="padding-left: 8px;color: var(--primary-color);">إجمالي الفاتورة  : </samp> 3333 </div> </td>
+</tr>   
+</table>
+<table><br><tr>
+<td class="td"  >
+<div class="inf-text"> 
+<button class="btn info"style="background-color: var(--primary-color); color: #fff;">الملف الشخصي</button> 
+</div></td>
+<td class="td"  >
+<div class="inf-text">  <button class="btn info"style="background-color: var(--primary-color); color: #fff;"> تعديل البيانات </button> </div>
+</td>
+<td class="td"  >
+<div class="inf-text">  <button class="btn info"style="background-color: var(--primary-color); color: #fff;">  طباعة التذكرة</button>
+ </div>
+</td>
+<td class="td">
+<div class="inf-text">  <button class="btn info"style="background-color: var(--primary-color); color: #fff;"> طباعة الفاتورة </button> </div>
+</td>
+<!-- <td class="td"  >
+<div class="inf-text">  <button class="btn info"style="background-color: var(--primary-color); color: #fff;"> طباعة الروشتة </button> </div>
+</td> -->
+<td class="td">
+<div class="inf-text">  <button class="btn info"style="background-color: var(--primary-color); color: #fff;"> اضافة تقييم </button> </div>
+</td>
+<!-- 
+<td class="td">
+<div class="inf-text">  <button class="btn info" style="background-color: var(--primary-color); color: #fff;"> عرض الروشتة</button> </div>
+</td> -->
+<td class="td" style="float: left;">
+<div class="inf-text">  <button class="btn info" style="
+ 
+
+background-color:red;
+ 
+ color: #fff; 
+    border-color: red; 
+
+" onclick="document.getElementById('id01').style.display='none'"> إلغاء</button> </div>
+</td>
+</tr>   
+</table></div>
+</div></div></div>
+
+
+ </div>
+</div></div>
+
+
+
+<!--  0-->
+
+ 
+<!-- end  tk-->
+
+ 
+
+<div class="mobil">
+
+
+
+<div class="tab">
+  <button class="tablinks">
+
+
+
+
+
+  انتظار
+ 
+  <samp style=" background-color: var(--primary-color);
+     
+ margin-right: 5px;
+        color: #fff;
+        border-radius: 50px;
+        font-size:10px;   padding:2px 6px 2px 6px  ;
+      ">55</samp>
+
+</button>
+
+  <button class="tablinks" onclick="openCity(event, 'missedappointment')"> عدم الرد
+  <samp style=" background-color: var(--primary-color);
+     
+ margin-right: 5px;
+        color: #fff;
+        border-radius: 50px;
+        font-size:10px;  padding:2px 6px 2px 6px ;
+      ">555</samp>
+  </button>
+
+
+
+  <button class="tablinks" onclick="openCity(event, 'Unconfirmedbooking')">حجز غير مؤكد
+
+      <samp style=" background-color: var(--primary-color);
+     
+ margin-right: 5px;
+        color: #fff;
+        border-radius: 50px;
+        font-size:10px; padding:2px 6px 2px 6px  ;
+      ">555</samp>
+  </button>
+
+
+
+ 
+
+
+ 
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+ <div style="width: 100% ;   float: right; ">
+
+
+
+
+
+
+<div style="width:100%;  float: right; ">
+<h3 style="text-align: right;">
+<ul class="breadcrumb">
+ <li style="color: var(--text-color);">  الحجوزات </li>
+<li style="color: var(--text-color);"> الانتظار</li>
+</ul></h3> </div> 
+
+
+
+
+
+<div style="width:100%;   position: relative; float: right;">
+
+
+
+<div style="width:40%;  padding-top: 15px; margin-right: 20px;   ;position: relative; float: right;  ">
+<button class="btn info"  onclick="myCalendar()" 
+style="  
+  border: 2px solid black;
+  padding: 5px 15px;
+  font-size: 13px;
+ border-color: var(--primary-color);
+  margin-left: 5px;
+ "> Calendar </button>
+</div>
+
+
+<div style="width:40%;  padding-top: 15px; margin-right: 20px;   ;position: relative; float: right;  ">
+
+
+<button class="btn info" onclick="openNav()"  
+style="  
+  border: 2px solid black;
+  padding: 5px 25px;
+  font-size: 13px;
+ border-color: var(--primary-color);
+  margin-left: 5px;
+ "> بحث </button>
+</div>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+ 
+
+<div class="scroller">
+<div style="
+overflow-x:auto;
+   padding: 15px;
+border-radius: 10px;
+ padding-bottom: 300px;
+  ">
+
+  <table class="tablecard"  style="margin-top: 15px; text-align: center; border: 0px solid #ccc; ">
+
+
+
+
+<tr class="tr" style=" border: 0px solid #ccc;">
+ <th style="
+ border-radius: 0px 20px 0px 0px;
+text-align: center;
+ color:var(--primary-color);
+border : 0px solid #ccc;
+text-align: right;
+border-left:   1px solid #ccc;
+ background-color: #fff;
+ padding: 10px;
+ padding-right: 15px;
+ "> 
+   تاريخ الإنشاء
+
+ </th>
+
+<td class="tdcard"style="  
+border : 0px solid #ccc;
+ 
+border-radius: 20px 0px 0px 0px;
+  color:#000;
+background-color: #fff;
+padding: 10px;" 
+> ٢٢‏/٠١‏/٢٠٢٣</td>
+</tr>
+
+
+
+<tr class="tr">
+ <th style="
+ color:var(--primary-color);text-align: center;
+border : 1px solid #ccc;
+text-align: right;
+ background-color: #fff;
+ padding: 10px;
+padding-right: 15px;
+ "> 
+  الاسم
+</th>
+
+<td class="tdcard"style=" 
+border : 1px solid #ccc;
+ 
+  border-radius: 0px 0px 0px 0px;
+   color:#000;
+  background-color: #fff;
+  padding: 10px;" >
+Download Bx detail
+</td>
+</tr>
+ 
+
+
+
+<tr class="tr">
+ <th style="
+ color:var(--primary-color);text-align: center;
+border : 1px solid #ccc;
+ text-align: right;
+ background-color: #fff;
+ padding: 10px;
+padding-right: 15px;
+ "> 
+رقم الجوال
+</th>
+
+<td class="tdcard"style=" 
+border : 1px solid #ccc;
+ 
+  border-radius: 0px 0px 0px 0px;
+  color:#000;
+  background-color: #fff;
+  padding: 10px;" >
+041858474/87
+</td>
+</tr>
+ 
+
+
+<tr class="tr">
+ <th style="
+ color:var(--primary-color);text-align: center;
+border : 1px solid #ccc;
+text-align: right;
+ background-color: #fff;
+ padding: 10px;
+padding-right: 15px;
+ "> 
+ التاريخ
+</th>
+
+<td class="tdcard"style=" 
+border : 1px solid #ccc;
+  border-radius: 0px 0px 0px 0px;
+  color:#000;
+  background-color: #fff;
+  padding: 10px;
+
+  " >
+٢٢‏/٠١‏/٢٠٢٣  
+</td>
+</tr>
+ 
+
+<tr class="tr">
+ <th style="
+ color:var(--primary-color);text-align: center;
+border : 1px solid #ccc;
+text-align: right;
+ background-color: #fff;
+ padding: 10px;
+padding-right: 15px;
+ "> 
+ الميعاد
+</th>
+
+<td class="tdcard"style=" 
+border : 1px solid #ccc;
+ 
+  border-radius: 0px 0px 0px 0px;
+  color:#000;
+  background-color: #fff;
+  padding: 10px;" >
+05:20
+</td>
+</tr>
+
+
+
+
+
+
+
+
+
+
+<tr class="tr">
+ <th style="
+ color:var(--primary-color);text-align: center;
+border : 1px solid #ccc;
+ text-align: right;
+ background-color: #fff;
+ padding: 10px;
+padding-right: 15px;
+ "> 
+الملف الشخصي
+</th>
+
+<td class="tdcard"style=" 
+border : 1px solid #ccc;
+ 
+  border-radius: 0px 0px 0px 0px;
+  color:var(--primary-color);
+  background-color: #fff;
+  padding: 10px;" >
+<a href=""> <i class="bx bx-user-circle toggle"  id="spoticoncard"  ></i></a>
+</td>
+</tr>
+ 
+
+ 
+
+
+
+
+
+
+
+<tr class="tr">
+<th style="
+color:var(--primary-color);text-align: center;
+background-color: #fff;
+padding: 10px;
+border : 1px solid #ccc;
+padding-right: 15px;
+text-align: right;
+"> حاله الحجز</th>
+
+
+
+<td class="tdcard"> 
+  <!--       <samp  class="spotcard">ا
+
+
+        نتظار
+
+
+
+      </samp>   
+ -->
+
+<form   action="" method="post">
+
+<!--
+       <label class="switch">
+         <input type="checkbox">
+         <span class="slider"></span>
+       </label> -->
+
+   <label class="switch">
+         <input type="checkbox" checked>
+         <span class="slider"></span>
+       </label>
+</form><!--
+       <label class="switch">
+         <input type="checkbox">
+         <span class="slider round"></span>
+       </label> -->
+
+       <!-- <label class="switch">
+         <input type="checkbox" checked>
+         <span class="slider round"></span>
+       </label> -->
+  </td>
+<!--  -->
+
+
+
+
+</th>
+
+</tr>
+ <tr class="tr">
+
+ <th style="
+ border-radius:0px  0px 20px 0px;text-align: center;
+ color:var(--primary-color); 
+ background-color: #fff;
+padding: 10px;
+border : 0px solid #ccc;
+border-bottom: 0px solid #ccc;
+border-left:   1px solid #ccc;
+text-align: right;
+padding-right: 15px;
+ 
+  ">عرض التذكره</th>
+</th>
+
+<td class="tdcard" style="border-radius: 0px 0px 0px 20px;border : 0px solid #ccc;">
+  <samp onclick="mytkmobil()"  >
+<i class="bx bx-detail toggle"  id="spoticoncard"  ></i></samp></td> 
+
+
+
+
+</tr>
+</table></div>
+ 
+
+
+
+
+</div>
+
+ 
+<div class="mobil">
+<div id="tkmobil" class="modal" >     
+<div  class="modal-content animate"> <div>
+ 
+ 
+<div  class="modal-content-tk ">
+
+<div class="inf-text"> <samp style="padding-left: 8px;color: var(--primary-color);"> البيانات الشخصية </samp> <br> 
+
+</div>
+<div class="inf"> 
+<table class="table">
+<tr class="tr">
+<th class="th"> <li> الاسم :</li></th>
+  <td class="td" style="text-align: right;"> فيصل</td>
+</tr>
+<tr class="tr">
+<th  class="th"><li>  النوع :</li> </th>
+  <td class="td" style="text-align: right;"> ذكر</td>
+</tr>
+<tr class="tr">
+<th  class="th"><li> العمر :  </li></th>
+  <td class="td" style="text-align: right;"> 25</td>
+</tr>
+ 
+<tr class="tr">
+<th  class="th"><li>  تاريخ الانضمام :   </li> </th>
+  <td class="td" style="text-align: right;"> ٢٢‏/٠١‏/٢٠٢٣ </td>
+</tr>
+<tr class="tr">
+<th  class="th"><li>  رقم الملف : </li></th>
+  <td class="td" style="text-align: right;">  3434</td>
+</tr>
+<tr>
+<th  class="th"><li>رقم الجوال :  </li></th>
+  <td class="td" style="text-align: right;"> 0246463456</td>
+</tr>
+ 
+<tr class="tr">
+<th  class="th"><li>  الدولة :  </li> </th>
+  <td class="td" style="text-align: right;">  السعودية</td>
+</tr>
+<tr class="tr">
+<th  class="th"><li>  المدينة : </li></th>
+  <td class="td" style="text-align: right;"> المدينة المنورة</td>
+</tr>
+<tr class="tr">
+<th class="th"><li> الحي السكني : </li> </th>
+  <td class="td" style="text-align: right;">  عسير</td>
+</tr>
+</table>
+</div>
+<div class="inf-text"> <samp style="padding-left: 8px;color: var(--primary-color);">بيانات الحجز  </samp> <br> 
+</div>
+<div class="inf"> 
+<table class="table">
+<tr class="tr">
+<th class="th"><li>  تاريخ الإنشاء :   </li> </th>
+  <td class="td" style="text-align: right;">  ٢٢‏/٠١‏/٢٠٢٣ </td>
+</tr>
+<tr class="tr">
+<th class="th"><li>  نوع الاتصال :    </li></th>
+  <td class="td" style="text-align: right;"> استقبال المكالمة  </td>
+</tr>
+<tr class="tr">
+<th class="th"><li> حالة الدفع :  </li> </th>
+  <td class="td" style="text-align: right;">  عند استلام الخدمة </td>
+</tr>
+<tr class="tr">
+<th class="th"><li>  كول سنتر : </li></th>
+  <td class="td" style="text-align: right;">  call center</td>
+</tr>
+ 
+<tr class="tr">
+<th class="th"> <li>  نوع الحجز </li></th>
+  <td class="td" style="text-align: right;"> كشف </td>
+</tr>
+<tr class="tr">
+<th class="th"> <li>  تاريخ الحجز :    </li></th>
+  <td class="td" style="text-align: right;"> ٢٢‏/٠١‏/٢٠٢٣ </td>
+</tr>
+<tr class="tr">
+<th class="th"> <li>  الميعاد :</li></th>
+  <td class="td" style="text-align: right;">  05:20</td>
+</tr>
+ 
+<tr class="tr">
+<th class="th"><li>  الفرع </li></th>
+  <td class="td" style="text-align: right;"> الفرع 1 </td>
+ </tr>
+
+
+
+<tr>
+<th class="th"><li>  القسم :  </li></th>
+  <td class="td" style="text-align: right;">  الجلدية</td>
+ </tr>
+ 
+
+ 
+  <tr class="tr">
+    <th class="th"> <li>  التخصص    </li></th>
+  <td class="td" style="text-align: right;"> جلدية </td>
+ </tr>
+  
+    <tr class="tr">
+    <th class="th"><li> الطبيب :  </li> </th>
+  <td class="td" style="text-align: right; "> عبد الفتاح </td>
+ </tr>
+ 
+</table>
+
+
+</div>
+ 
+
+
+<div class="inf-text"> <samp style="padding-left: 8px;color: var(--primary-color);">  العروض :</samp> <br> 
+    </div>
+
+
+
+
+<div style="width: 98%;margin:auto; ">
+ 
+
+<button  class='buttonoffer'>
+<samp   class='buttonoffersamp1'> تنظيف بشرة </samp>  
+<samp   class='buttonoffersamp2'>
+<samp>555</samp>  <samp>ريال</samp> </samp>  
+</button>
+<button  class='buttonoffer'>
+<samp   class='buttonoffersamp1'> تنظيف بشرة </samp>  
+<samp   class='buttonoffersamp2'>
+<samp>555</samp>  <samp>ريال</samp> </samp>  
+</button>
+
+<button  class='buttonoffer'>
+<samp   class='buttonoffersamp1'> تنظيف بشرة </samp>  
+<samp   class='buttonoffersamp2'>
+<samp>555</samp>  <samp>ريال</samp> </samp>  
+</button>
+ 
+<button  class='buttonoffer'>
+<samp   class='buttonoffersamp1'> تنظيف بشرة </samp>  
+<samp   class='buttonoffersamp2'>
+<samp>555</samp>  <samp>ريال</samp> </samp>  
+</button> 
+ 
+
+</div>
+ 
+<div class="inf-text" > <samp style="padding-left: 8px;color: var(--primary-color); font-size: 13px;">  ملاحظات :  </samp> <br>  </div>
+ 
+
+
+
+<div class="inf-text" style="font-size: 2px;"> <samp style="padding-left: 8px;color: var(--primary-color);font-size: 10px;"> <li>ملاحظة المريض : </li></samp> 
+
+يمكنك إنشاء حساب أو تسجيل الدخول إلى فيسبوك والتواصل مع الأصدقاء وأفراد العائلة والأشخاص الآخرين الذين تعرفهم. استمتع بمشاركة الصور ومقاطع الفيديو وإرسال...    
+
+
+             </div>
+
+
+
+ 
+
+<div class="inf-text" style="font-size: 2px;"> <samp style="padding-left: 8px;color: var(--primary-color);font-size: 10px;"> <li> ملاحظة : </li> </samp>  
+
+ 
+يمكنك إنشاء حساب أو تسجيل الدخول إلى فيسبوك والتواصل مع الأصدقاء وأفراد العائلة والأشخاص الآخرين الذين تعرفهم. استمتع بمشاركة الصور ومقاطع الفيديو وإرسال...    
+
+</div>
+
+<div class="inf "style="width: 100%; font-size: 12px;   ">
+ <table style=" margin-bottom: 5px;"  >
+
+ 
+<tr>
+<td class="td">
+<div class="inf-text"style=' width:100%;font-size: 12px; '> <samp style="padding-left: 8px;color: var(--primary-color);">إجمالي الفاتورة  : </samp> 3333 </div> </td>
+ </tr>   
+</table>
+
+ 
+ 
+
+ <div style="width: 100%; border-bottom:1px solid var(--primary-color);margin-bottom: 15px;" ></div>
+ 
+
+  
+
+
+<table>  
+
+
+
+ 
+  <tr >
+
+<td class="td"  >
+<div class="inf-text" style="margin-bottom: 10px;"> 
+<button class="btn info"style="background-color: var(--primary-color); color: #fff;">الملف الشخصي</button> 
+</div>
+</td>
+<td class="td" >
+
+<div class="inf-text" style="margin-bottom: 10px;">  <button class="btn info"style="background-color: var(--primary-color); color: #fff;"> تعديل البيانات </button> </div>
+</td></tr>    <tr> 
+<td class="td"  >
+<div class="inf-text" style="margin-bottom: 10px;">  <button class="btn info"style="background-color: var(--primary-color); color: #fff;">  طباعة التذكرة</button>
+ </div>
+</td>
+<td class="td">
+<div class="inf-text" style="margin-bottom: 10px;">  <button class="btn info"style="background-color: var(--primary-color); color: #fff;"> طباعة الفاتورة </button> </div>
+</td>
+<!-- <td class="td"  >
+<div class="inf-text">  <button class="btn info"style="background-color: var(--primary-color); color: #fff;"> طباعة الروشتة </button> </div>
+</td> --></tr>   <tr> 
+<td class="td">
+<div class="inf-text" style="margin-bottom: 10px;">  <button class="btn info"style="background-color: var(--primary-color); color: #fff;"> اضافة تقييم </button> </div>
+</td>
+
+<td class="td">
+<div class="inf-text" style="margin-bottom: 10px;">  <button class="btn info" style="background-color: var(--primary-color); color: #fff;"> عرض الروشتة</button> </div>
+</td>
+</tr> 
+
+ 
+</table> 
+
+ 
+<div class="inf-text" style="width: 90%; margin-bottom: 10px;margin: auto;   "  >  <button class="btn info"
+ style="
+background-color:red;
+ color: #fff;
+  width: 100%;
+    border-color: red; 
+ "  onclick="mytkmobil()"  > إلغاء</button> </div>
+ 
+
+ </div>  
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+ 
+
+
+
+
+
+</div></div></div></div>
+
+
+
+
+    </section>
+
+<script src="script.js"></script>
+
+
+<script type="text/javascript">
+   
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+   <script>
+     function tk() {
+       var x = document.getElementById("tk");
+       if (x.style.display === "none") {
+         x.style.display = "block";
+       } else {
+         x.style.display = "none";
+       }
+     } </script>
+
+
+<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function dropbtnFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("Dropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+<script type="text/javascript">
+const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+checkboxes.forEach(checkbox => {
+  checkbox.addEventListener('change', (event) => {
+    // Iterate over all checkboxes and uncheck them except for the one that was clicked
+    checkboxes.forEach(cb => {
+      if (cb !== event.target) {
+        cb.checked = false;
+      }
+    });
+  });
+});
+</script>
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+ 
+ <script>
+// Get the modal
+ 
+function myCalendar() {
+  var x = document.getElementById("calender");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script> 
+ <script>
+// Get the modal
+ 
+function mydropdown() {
+  var x = document.getElementById("dropdownmobil");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+
+ <script>
+// Get the modal
+ 
+function mytkmobil() {
+  var x = document.getElementById("tkmobil");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+<script type="text/javascript">
+const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+checkboxes.forEach(checkbox => {
+  checkbox.addEventListener('change', (event) => {
+    // Iterate over all checkboxes and uncheck them except for the one that was clicked
+    checkboxes.forEach(cb => {
+      if (cb !== event.target) {
+        cb.checked = false;
+      }
+    });
+  });
+});
+
+
+
+     function checkboxesform() {
+        var x = document.getElementById("checkboxesformid");
+        if (x.style.display === "none") {
+          x.style.display = "block";
+        } else {
+          x.style.display = "none";
+        }
+      }
+      </script>

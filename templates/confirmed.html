@@ -1,0 +1,1238 @@
+
+
+    {% extends "base.html" %}
+    {% load static%}
+    {% load bootstrap4 %}
+     {% block content %}
+
+<html dir="rtl" lang="ar">
+
+
+
+
+
+<!-- Coding by CodingLab | www.codinglabweb.com -->
+
+    <!----======== CSS ======== -->
+    <!-- <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="profile.css"> -->
+   <link rel="stylesheet" href="{%static 'css/APP.css' %}">
+    <!----===== Boxicons CSS ===== -->
+
+
+
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+
+
+    <section class="home">
+
+
+
+             <!-- ----------------------dropdown---------------------------------- -->
+
+            <div class="dropdown">
+              <button onclick="dropbtnFunction()" class="dropbtn">الحجوزات</button>
+              <div id="myDropdown" class="dropdown-content">
+
+
+
+            <a href="{% url 'Dashboard:Appointment_waiting' %} " ><table style="width: 100%;   ">
+              <tr>
+            <th style="width: 80%;text-align: right;">   انتظار      </th>
+            <td style="width: 20%;">
+            <samp class="dropdown-badge">{{ booking.count }} </samp> </td>
+            </tr></table> </a>
+
+            <a href=" {% url 'Dashboard:Appointment_confirmed' %} " ><table style="width: 100%;"><tr>
+            <th style="width: 80%;text-align: right;">        حجز مؤكد   </th>
+            <td style="width: 20%;">
+            <samp class="dropdown-badge">{{ booking.count }}</samp> </td>
+            </tr></table> </a>
+
+
+
+            <a href="{% url 'Dashboard:Appointment_notanswering' %}" ><table style="width: 100%;"><tr>
+            <th style="width: 80%;text-align: right;">         عدم الرد </th>
+            <td style="width: 20%;">
+            <samp class="dropdown-badge">{{ booking.count }} </samp> </td>
+            </tr></table> </a>
+
+
+
+            <a href="{% url 'Dashboard:Appointment_inquiries' %}" ><table style="width: 100%;"><tr>
+            <th style="width: 80%;text-align: right;">      الاستفسار    </th>
+            <td style="width: 20%;">
+            <samp class="dropdown-badge">{{ booking.count }} </samp> </td>
+            </tr></table> </a>
+            <a href="{% url 'Dashboard:Appointment_visit' %}" ><table style="width: 100%;"><tr>
+            <th style="width: 80%;text-align: right;">  حضر   </th>
+            <td style="width: 20%;">
+            <samp class="dropdown-badge">{{ booking.count }}</samp> </td>
+            </tr></table> </a>
+
+            <a href="{% url 'Dashboard:Appointment_cancel' %}" ><table style="width: 100%;"><tr>
+            <th style="width: 80%;text-align: right;">     إلغاء الحجز  </th>
+            <td style="width: 20%;">
+            <samp class="dropdown-badge">{{ booking.count }}5 </samp> </td>
+            </tr></table> </a>
+
+
+
+
+
+
+
+<!--
+            <a href="" ><table style="width: 100%;"><tr>
+            <th style="width: 80%;text-align: right;"> حجز فائت  </th>
+            <td style="width: 20%;">
+            <samp class="dropdown-badge">555 </samp> </td>
+            </tr></table> </a>
+
+            <a href="" ><table style="width: 100%;"><tr>
+            <th style="width: 80%;text-align: right;">   زيارات غدا </th>
+            <td style="width: 20%;">
+            <samp class="dropdown-badge">555 </samp> </td>
+            </tr></table> </a>
+
+
+      <a href=" " ><table style="width: 100%;"><tr>
+      <th style="width: 80%;text-align: right;">   الزيارات قبل 3 ساعات</th>
+      <td style="width: 20%;">
+      <samp class="dropdown-badge">555 </samp> </td>
+      </tr></table> </a>
+
+            <a href="" ><table style="width: 100%;"><tr>
+            <th style="width: 80%;text-align: right;">    زيارات اليوم </th>
+            <td style="width: 20%;">
+            <samp class="dropdown-badge">555 </samp> </td>
+            </tr></table> </a>
+
+
+
+
+            <a href=" " ><table style="width: 100%;"><tr>
+            <th style="width: 80%;text-align: right;">      زيارات فائت  اليوم  </th>
+            <td style="width: 20%;">
+            <samp class="dropdown-badge">555 </samp> </td>
+            </tr></table> </a>
+
+
+
+
+            <a href=" " ><table style="width: 100%;"><tr>
+            <th style="width: 80%;text-align: right;">   قائمه الانتظار  </th>
+            <td style="width: 20%;">
+            <samp class="dropdown-badge">555 </samp> </td>
+            </tr></table> </a>
+
+            <a href="" ><table style="width: 100%;"><tr>
+            <th style="width: 80%;text-align: right;">  تم تقديم الخدمه  </th>
+            <td style="width: 20%;">
+            <samp class="dropdown-badge">555 </samp> </td>
+            </tr></table> </a>
+ -->
+
+
+
+
+              </div>
+            </div>
+              <!-- ----------------------  end---------------------------------- -->
+
+
+
+
+<div id="mySidenav" class="sidenav">
+<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+ <div  style ="width: 80%; margin:auto;">
+<style media="screen">
+  .btn_submit {
+ background-color: var(--primary-color);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+</style>
+<form method="get">
+{% csrf_token %}
+{% bootstrap_form Bookingfilter.form %}
+{% buttons %}<button class="btn_submit" type="submit">بحث</button>{% endbuttons %}</form>
+</div> </div>
+
+
+<div  class="page">
+
+
+
+
+
+        <!-- ----------------------  waiting--------------------------------- -->
+
+
+
+
+
+
+
+
+        <!-- ----------------------  --------------------------------- -->
+
+
+
+
+      <!-- <div style=" position: relative; padding-bottom: 150px;">
+      <ul class="breadcrumb">
+       <li style="color: var(--text-color);">  الحجوزات </li>
+      <li style="color: var(--text-color);"> الانتظار</li>
+      </ul></h3>  </div>
+      </div>
+      <br>  -->
+
+
+      <div class="dask">
+
+
+
+
+
+
+
+
+      <a href="#" class="notification">
+      <!--   <span>Inbox</span> -->
+        <span class="badge">3</span>
+      </a>
+
+
+              <div class="text">appointment</div>
+
+
+
+
+      <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'waiting ')">
+
+
+
+
+
+        انتظار
+
+        <samp style=" background-color: var(--primary-color);
+
+       margin-right: 5px;
+              color: #fff;
+              border-radius: 50px;
+              font-size:10px;   padding:2px 6px 2px 6px  ;
+            ">55</samp>
+
+      </button>
+
+        <button class="tablinks" onclick="openCity(event, 'missedappointment')"> عدم الرد
+        <samp style=" background-color: var(--primary-color);
+
+       margin-right: 5px;
+              color: #fff;
+              border-radius: 50px;
+              font-size:10px;  padding:2px 6px 2px 6px ;
+            ">555</samp>
+        </button>
+
+
+
+        <button class="tablinks" onclick="openCity(event, 'Unconfirmedbooking')">حجز غير مؤكد
+
+            <samp style=" background-color: var(--primary-color);
+
+       margin-right: 5px;
+              color: #fff;
+              border-radius: 50px;
+              font-size:10px; padding:2px 6px 2px 6px  ;
+            ">555</samp>
+        </button>
+
+
+
+        <button class="tablinks" onclick="openCity(event, 'Reservationconfirmed')">حجز مؤكد
+
+        <samp style=" background-color: var(--primary-color);
+
+       margin-right: 5px;
+              color: #fff;
+              border-radius: 50px;
+              font-size:10px;   padding:2px 6px 2px 6px  ;
+            ">555</samp>
+
+        </button>
+
+
+        <button class="tablinks" onclick="openCity(event, 'cancel')"> زيارات اليوم
+
+            <samp style=" background-color: var(--primary-color);
+
+       margin-right: 5px;
+              color: #fff;
+              border-radius: 50px;
+              font-size:10px;  padding:2px 6px 2px 6px  ;
+            ">555</samp>
+        </button>
+
+        <button class="tablinks" onclick="openCity(event, 'Visit')">حضر
+        <samp style=" background-color: var(--primary-color);
+
+       margin-right: 5px;
+              color: #fff;
+              border-radius: 50px;
+              font-size:10px; padding:2px 6px 2px 6px  ;
+            ">555</samp>
+        </button>
+
+
+
+        <button class="tablinks" onclick="openCity(event, 'Inquiries')">قائمه الانتظار
+        <samp style=" background-color: var(--primary-color);
+
+       margin-right: 5px;
+              color: #fff;
+              border-radius: 50px;
+              font-size:10px;   padding:2px 6px 2px 6px  ;
+            ">555</samp>
+
+        </button>
+
+
+      </div>
+
+      <div style="width: 100% ;   float: right; ">
+      <div style="width:50%;  float: right; ">
+      <h3 style="text-align: right;">
+      <ul class="breadcrumb">
+      <li style="color: var(--text-color);">  الحجوزات </li>
+      <li style="color: var(--text-color);"> {{title}} </li>
+      </ul></h3> </div>
+      <div style="width:50%; float: right;  ">
+      <div style="width:110px; float: left; padding-top: 15px;margin-left: 8px;    ">
+
+
+      <button class="btn info" onclick="openNav()" > بحث </button>
+
+
+      </div>
+
+      <!-- <div style="width:110px; float: left; padding-top: 15px;margin-left: 8px;    ">
+      <button class="btn info">إضافة حجز  </button>
+      </div> -->
+      </div></div> <br>
+
+      <div style="overflow-x:auto;   padding: 15px;border-radius: 10px; padding-bottom: 300px; ">
+      <table class="tablecard" >
+       <tr style=" margin : 15px; ">
+       <th style="border-radius: 0px 20px 0px 0px;color:var(--primary-color);background-color: #fff;padding: 10px;">  تاريخ الإنشاء</th>
+       <th style="color:var(--primary-color);background-color: #fff;padding: 10px;"> الاسم</th>
+       <th style="color:var(--primary-color);background-color: #fff;padding: 10px;"> رقم الجوال </th>
+       <th style="color:var(--primary-color);background-color: #fff;padding: 10px;"> knew_from </th>
+       <th style="color:var(--primary-color);background-color: #fff;padding: 10px;"> حاله الحجز</th>
+       <th style="border-radius:20px  0px 0px 0px;color:var(--primary-color); background-color: #fff; padding: 10px;">عرض التذكره</th>
+        </tr>
+        <!-- -    -->
+
+
+      {% for data in Bookingfilter.qs   %}
+
+
+      <tr>
+      <td class="tdcard">{{ data.created_at|timesince}}</td>
+      <td class="tdcard" > {{ data.name }}</td>
+      <td class="tdcard" > {{ data.status_appointment }}</td>
+
+      <td class="tdcard" >{{ data.get_knew_from_display }}</td>
+
+
+
+
+        <td class="tdcard">
+          <div class="dropdown">
+            <samp onclick="toggleDropdown('{{data.id}}')">
+              <i class="bx bx-toggle-left toggle" id="spoticoncard"></i>
+            </samp>
+            <div id="dropdown-{{data.id}}" class="dropdown-conten">
+
+
+        <script type="text/javascript">
+        function toggleDropdown(id) {
+          var dropdown = document.getElementById("dropdown-" + id);
+          if (dropdown.style.display === "none") {
+            dropdown.style.display = "block";
+          } else {
+            dropdown.style.display = "none";
+          }
+        }
+        </script>
+
+
+
+
+
+
+    <form  method="POST" class="update-appointment-form"  >
+
+
+  {% csrf_token %}
+  <div class="stutscard">
+    <table style="float: right; width:100%; position: relative;">
+      <tr style="float: right; width: 100%;">
+        <th style="width: 70%;"> حضر</th>
+        <th style="width: 30%;">
+          <label class="switch">
+            <input type="checkbox" class="status-checkbox" data-appointment-id="{{data.id}}" data-status="visit"  >
+            <span class="slider round"></span>
+          </label>
+        </th>
+      </tr>
+    </table>
+  </div>
+
+  <div class="stutscard">
+    <table style="float: right; width:100%;">
+      <tr style="float: right; width: 100%;">
+        <th style="width: 70%;">عدم الرد</th>
+        <th style="width: 30%;">
+          <label class="switch">
+            <input type="checkbox" class="status-checkbox" data-appointment-id="{{ data.id }}" data-status="notanswering">
+            <span class="slider round"></span>
+          </label>
+        </th>
+      </tr>
+    </table>
+  </div>
+  <div class="stutscard">
+    <table style="float: right; width:100%;">
+      <tr style="float: right; width: 100%;">
+        <th style="width: 70%;">إلغاء</th>
+        <th style="width: 30%;">
+          <label class="switch">
+            <input type="checkbox" class="status-checkbox" data-appointment-id="{{ data.id }}" data-status="cancel">
+            <span class="slider round"></span>
+          </label>
+        </th>
+      </tr>
+    </table>
+  </div>
+
+<button class="button">اغلاق </button>
+
+
+</form>
+
+
+           </div> </div></td>
+
+      <!--  -->
+      <td class="tdcard"><samp onclick="document.getElementById('id01').style.display='block'" >
+      <i class="bx bx-detail toggle"  id="spoticoncard"  ></i></samp>
+
+
+
+
+
+
+
+       <!-- ----------------------  start tk--------------------------------- -->
+      <div class="dask" ><div id="id01" class="modal"><div  class="modal-content animate"> <div>
+      <div  class="modal-content-tk ">
+      <div class="inf-text" style=" font-size: 12px; width: 100%;  ">
+      <table style=" font-size: 12px; width: 100%; border-bottom:2px solid var(--primary-color); padding-bottom: 3px; ">
+      <tr class="tr" style=" font-size: 13px; width: 100%; ">
+      <th class="th"  style=" width: 30%; font-size: 15px;  ">
+      <samp style="padding-left: 8px;color: var(--primary-color);"> البيانات الشخصية </samp> <br>
+      </th> <th class="th"  style=" width: 30%;  ">  حاله الحجز :
+      <samp style=" background-color: var(--primary-color); padding:0px 8px 0px 8px  ; color: #fff;  font-size:13px; border-radius: 8px; ">
+        {{data.status_appointment}}  </samp> </th>
+      <td class="td"style=" width:30%; ">
+      <!--     <button class="btn info"style="background-color: var(--primary-color); color: #fff;">الملف الشخصي</button>
+       --></td></tr></table></div>
+      <!-- <div style="width: 100%; border-bottom:   2px solid var(--primary-color); "> </div> -->
+      <!-- <div class="inf-text"> <samp style="padding-left: 8px;color: var(--primary-color);"> البيانات الشخصية </samp> <br>
+      </div> -->
+      <div class="inf">
+      <table class="table">
+      <tr class="tr">
+      <th class="th"><li>  الاسم :</li> </th>
+      <td class="td">{{data.patients}}</td>
+      </tr>
+      <tr class="tr">
+      <th  class="th"><li> النوع : </li> </th>
+      <td class="td">ذكر</td>
+      </tr>
+      <tr class="tr">
+      <th  class="th"> <li>العمر : </li> </th>
+      <td class="td">25</td>
+      </tr>
+      </table>
+      </div>
+      <!--  -->
+      <div class="inf">
+      <table class="table">
+      <tr class="tr">
+      <th  class="th"> <li>تاريخ الانضمام :   </li> </th>
+      <td class="td">{{ data.patients.date_joined }}</td>
+      </tr>
+      <tr class="tr">
+      <th  class="th"><li> رقم الملف : </li></th>
+      <td class="td"> 3434</td>
+      </tr>
+      <tr>
+      <th  class="th"><li>رقم الجوال : </li> </th>
+      <td class="td">{{ data.patients.phone_number }} </td>
+      </tr>
+      </table>
+      </div>
+
+      <div class="inf-text"> <samp style="padding-left: 8px;color: var(--primary-color);">  العروض :</samp> <br>  </div>
+      <div style="width: 98%;margin:auto; ">
+
+
+       {% for service in data.service.all %}
+      <button  class='buttonoffer'>
+      <samp   class='buttonoffersamp1'>{{ service.Title }} </samp>
+      <div style=" width: auto;">
+      <samp   class='buttonoffersamp2'>
+      <samp> {{ service.price }} </samp>  <samp>ريال</samp> </samp>    </div>
+      </button>
+      {% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div class="inf-text" > <samp style="padding-left: 8px;color: var(--primary-color); ">  ملاحظات :  </samp> <br>  </div>
+      <div class="inf-text" style=" font-size: 12px;">
+      <table  >
+      <tr class="tr" style="">
+      <th class="th"  style="width: 130px; ">  <samp style="padding-left: 8px;color: var(--primary-color);  "> <li style="height: 0px;">  ملاحظة المريض :  </li> </samp> </th>
+      <td class="td"style="width: 85%; ">   {{ data.Message}}   </td>
+      </tr>
+      </table>
+      </div>
+
+      <!--  -->
+      <div class="inf "style="width: 100%;  ">
+       <table style="width: 100%; border-bottom:2px solid var(--primary-color); padding-bottom: 8px; ">
+      <tr>
+      <td class="td" style="width: 100%;  ">
+      <div class="inf-text"> <samp style="padding-left: 8px;color: var(--primary-color);">إجمالي الفاتورة  : </samp> 3333 </div> </td>
+      </tr>
+      </table>
+      <table><br><tr>
+      <td class="td"  >
+      <div class="inf-text">
+
+      <td class="td" style="float: left;">
+      <div class="inf-text">  <button class="btn info" style="
+
+
+      background-color:red;
+
+       color: #fff;
+          border-color: red;
+
+      " onclick="document.getElementById('id01').style.display='none'"> إلغاء</button> </div>
+      </td>
+      </tr>
+      </table>
+</div>
+
+</td> </tr>
+
+
+<!---    -->
+<th style="background-color: #fff;border-radius: 0px 0px  20px  0px; "></th>
+<th style="padding: 20px; background-color: #fff;"></th>
+<th style="padding: 20px; background-color: #fff;"></th>
+<th style="padding: 20px; background-color: #fff;"></th>
+<th style="padding: 20px; background-color: #fff;"></th>
+<th style="background-color: #fff;border-radius:  0px 0px  0px  20px; "></th>
+
+</table></div> <h2  style ="text-align:center; padding-top:10px; color: var(--primary-color);">
+ لا توجد مواعيد متاحة</h2>
+{% endfor %}</div></div>
+
+
+
+      <!-- end  tk-->
+
+
+
+      <div class="mobil">
+
+
+
+
+       <div style="width: 100% ;   float: right; ">
+
+
+
+
+
+
+      <div style="width:100%;  float: right; ">
+      <h3 style="text-align: right;">
+      <ul class="breadcrumb">
+       <li style="color: var(--text-color);">  الحجوزات </li>
+      <li style="color: var(--text-color);"> {{title}}</li>
+      </ul></h3> </div>
+
+
+
+
+
+      <div style="width:100%;   position: relative; float: right;">
+
+
+
+
+
+
+      <div style="width:40%;  padding-top: 15px; margin-right: 20px;   ;position: relative; float: right;  ">
+
+
+      <button class="btn info" onclick="openNav()"
+      style="
+        border: 2px solid black;
+        padding: 5px 25px;
+        font-size: 13px;
+       border-color: var(--primary-color);
+        margin-left: 5px;
+       "> بحث </button>
+      </div>
+
+      </div>
+
+
+
+      </div>
+
+
+
+
+
+
+
+      <div class="scroller">
+      <div style="
+      overflow-x:auto;
+         padding: 15px;
+      border-radius: 10px;
+       padding-bottom: 300px;
+        ">
+
+
+        {% for data in Bookingfilter.qs   %}
+
+
+
+
+        <table class="tablecard"  style="margin-top: 15px; text-align: center; border: 0px solid #ccc; ">
+
+      <tr class="tr" style=" border: 0px solid #ccc;">
+       <th style="
+       border-radius: 0px 20px 0px 0px;
+      text-align: center;
+       color:var(--primary-color);
+      border : 0px solid #ccc;
+      text-align: right;
+      border-left:   1px solid #ccc;
+       background-color: #fff;
+       padding: 10px;
+       padding-right: 15px;
+       ">
+         تاريخ الإنشاء
+
+       </th>
+
+     <td class="tdcard"style="
+      border : 0px solid #ccc;
+
+      border-radius: 20px 0px 0px 0px;
+        color:#000;
+      background-color: #fff;
+      padding: 10px;"
+      > {{ data.created_at|timesince}}</td>
+      </tr>
+
+
+
+     <tr class="tr">
+       <th style="
+       color:var(--primary-color);text-align: center;
+      border : 1px solid #ccc;
+      text-align: right;
+       background-color: #fff;
+       padding: 10px;
+      padding-right: 15px;
+       ">
+        الاسم
+      </th>
+
+      <td class="tdcard"style="
+      border : 1px solid #ccc;
+
+        border-radius: 0px 0px 0px 0px;
+         color:#000;
+        background-color: #fff;
+        padding: 10px;" >
+     {{ data.patient_name }}
+      </td>
+      </tr>
+
+
+
+
+      <tr class="tr">
+       <th style="
+       color:var(--primary-color);text-align: center;
+      border : 1px solid #ccc;
+       text-align: right;
+       background-color: #fff;
+       padding: 10px;
+      padding-right: 15px;
+       ">
+      رقم الجوال
+      </th>
+
+      <td class="tdcard"style="
+      border : 1px solid #ccc;
+
+        border-radius: 0px 0px 0px 0px;
+        color:#000;
+        background-color: #fff;
+        padding: 10px;" >
+  {{ data.phone_number }}
+      </td>
+      </tr>
+
+
+
+      <tr class="tr">
+       <th style="
+       color:var(--primary-color);text-align: center;
+      border : 1px solid #ccc;
+      text-align: right;
+       background-color: #fff;
+       padding: 10px;
+      padding-right: 15px;
+       ">
+       التاريخ
+      </th>
+
+      <td class="tdcard"style="
+      border : 1px solid #ccc;
+        border-radius: 0px 0px 0px 0px;
+        color:#000;
+        background-color: #fff;
+        padding: 10px;
+
+        " >
+    {{ data.date }}
+      </td>
+      </tr>
+
+
+      <tr class="tr">
+       <th style="
+       color:var(--primary-color);text-align: center;
+      border : 1px solid #ccc;
+      text-align: right;
+       background-color: #fff;
+       padding: 10px;
+      padding-right: 15px;
+       ">
+       الميعاد
+      </th>
+
+      <td class="tdcard"style="
+      border : 1px solid #ccc;
+
+        border-radius: 0px 0px 0px 0px;
+        color:#000;
+        background-color: #fff;
+        padding: 10px;" >
+      {{ data.time }}
+      </td>
+      </tr>
+
+
+
+
+
+
+
+
+
+
+      <tr class="tr">
+       <th style="
+       color:var(--primary-color);text-align: center;
+      border : 1px solid #ccc;
+       text-align: right;
+       background-color: #fff;
+       padding: 10px;
+      padding-right: 15px;
+       ">
+      الملف الشخصي
+      </th>
+
+      <td class="tdcard"style="
+      border : 1px solid #ccc;
+
+        border-radius: 0px 0px 0px 0px;
+        color:var(--primary-color);
+        background-color: #fff;
+        padding: 10px;" >
+       <a href=" % url 'Patient:Patient_profile_Details' id=data.patient.id % "><i class="bx bx-user-circle toggle"  id="spoticoncard"  ></i></a>
+      </td>
+      </tr>
+
+
+
+
+
+
+
+
+
+
+      <tr class="tr">
+      <th style="
+      color:var(--primary-color);text-align: center;
+      background-color: #fff;
+      padding: 10px;
+      border : 1px solid #ccc;
+      padding-right: 15px;
+      text-align: right;
+      "> حاله الحجز</th>
+
+ <td class="tdcard">
+                <div class="dropdown">
+                  <samp onclick="ToggleDropdown('{{data.id}}')">
+                    <i class="bx bx-toggle-left toggle" id="spoticoncard"></i>
+                  </samp>
+                  <div id="Dropdown-{{data.id}}" class="dropdown-conten0">
+
+
+              <script type="text/javascript">
+              function ToggleDropdown(id) {
+                var dropdown = document.getElementById("Dropdown-" + id);
+                if (dropdown.style.display === "none") {
+                  dropdown.style.display = "block";
+                } else {
+                  dropdown.style.display = "none";
+                }
+              }
+              </script>
+
+
+
+
+
+
+          <form  method="POST" class="update-appointment-form"  >
+
+
+        {% csrf_token %}
+        <div class="stutscard">
+          <table style="float: right; width:100%; position: relative;">
+            <tr style="float: right; width: 100%;">
+              <th style="width: 70%;">تاكيد الحجز</th>
+              <th style="width: 30%;">
+                <label class="switch">
+                  <input type="checkbox" class="status-checkbox" data-appointment-id="{{data.id}}" data-status="confirmed"  >
+                  <span class="slider round"></span>
+                </label>
+              </th>
+            </tr>
+          </table>
+        </div>
+        <div class="stutscard">
+          <table style="float: right; width:100%;">
+            <tr style="float: right; width: 100%;">
+              <th style="width: 70%;">استفسار</th>
+              <th style="width: 30%;">
+                <label class="switch">
+                  <input type="checkbox" class="status-checkbox" data-appointment-id="{{data.id }}" data-status="inquiries">
+                  <span class="slider round"></span>
+                </label>
+              </th>
+            </tr>
+          </table>
+        </div>
+        <div class="stutscard">
+          <table style="float: right; width:100%;">
+            <tr style="float: right; width: 100%;">
+              <th style="width: 70%;">عدم الرد</th>
+              <th style="width: 30%;">
+                <label class="switch">
+                  <input type="checkbox" class="status-checkbox" data-appointment-id="{{ data.id }}" data-status="notanswering">
+                  <span class="slider round"></span>
+                </label>
+              </th>
+            </tr>
+          </table>
+        </div>
+        <div class="stutscard">
+          <table style="float: right; width:100%;">
+            <tr style="float: right; width: 100%;">
+              <th style="width: 70%;">إلغاء</th>
+              <th style="width: 30%;">
+                <label class="switch">
+                  <input type="checkbox" class="status-checkbox" data-appointment-id="{{ data.id }}" data-status="cancel">
+                  <span class="slider round"></span>
+                </label>
+              </th>
+            </tr>
+          </table>
+        </div>
+
+
+
+<button class="button">اغلاق </button>
+      </form>
+
+
+                 </div> </div></td>
+
+      </tr>
+
+
+
+
+
+
+
+
+
+
+   <tr class="tr">
+
+       <th style="
+       border-radius:0px  0px 20px 0px;text-align: center;
+       color:var(--primary-color);
+       background-color: #fff;
+      padding: 10px;
+      border : 0px solid #ccc;
+      border-bottom: 0px solid #ccc;
+      border-left:   1px solid #ccc;
+      text-align: right;
+      padding-right: 15px;
+
+        ">عرض التذكره</th>
+
+
+       <td class="tdcard" style="border-radius: 0px 0px 0px 20px;border : 0px solid #ccc;">
+        <samp onclick="mytkmobil()"  >
+      <i class="bx bx-detail toggle"  id="spoticoncard"  ></i></samp>
+
+<div class="mobil">
+<div id="tkmobil" class="modal" >
+<div  class="modal-content animate"> <div>
+<div  class="modal-content-tk ">
+<div class="inf-text"> <samp style="padding-left: 8px;color: var(--primary-color);"> البيانات الشخصية </samp> <br>  </div>
+
+
+     <div class="inf">
+      <table class="table">
+      <tr class="tr">
+      <th class="th"> <li> الاسم :</li></th>
+        <td class="td" style="text-align: right;">{{ data.patients }}</td>
+      </tr>
+      <tr class="tr">
+      <th  class="th"><li>  النوع :</li> </th>
+        <td class="td" style="text-align: right;"> ذكر</td>
+      </tr>
+      <tr class="tr">
+      <th  class="th"><li> العمر :  </li></th>
+        <td class="td" style="text-align: right;"> 25</td>
+      </tr>
+
+      <tr class="tr">
+      <th  class="th"><li>  تاريخ الانضمام :   </li> </th>
+        <td class="td" style="text-align: right;">{{ data.patients.date_joined }} </td>
+      </tr>
+      <tr class="tr">
+      <th  class="th"><li>  رقم الملف : </li></th>
+        <td class="td" style="text-align: right;">  3434</td>
+      </tr>
+      <tr>
+      <th  class="th"><li>رقم الجوال :  </li></th>
+        <td class="td" style="text-align: right;"> {{ data.patients.phone_number }} </td>
+      </tr>
+
+      </table>
+     <div class="inf-text"> <samp style="padding-left: 8px;color: var(--primary-color);">  العروض :</samp> <br>  </div>
+
+
+
+      <div style="width: 98%;margin:auto; ">
+      {% for service in data.service.all %}
+      <button  class='buttonoffer'>
+      <samp   class='buttonoffersamp1'>{{ service.Title }} </samp>
+      <div style=" width: auto;">
+      <samp   class='buttonoffersamp2'>
+      <samp> {{ service.price }} </samp>  <samp>ريال</samp> </samp>    </div>
+       {% endfor %}
+
+
+
+
+
+      </div>
+
+      <div class="inf-text" > <samp style="padding-left: 8px;color: var(--primary-color); font-size: 13px;">  ملاحظات :  </samp> <br>  </div>
+
+
+
+
+      <div class="inf-text" style="font-size: 2px;"> <samp style="padding-left: 8px;color: var(--primary-color);font-size: 10px;"> <li>ملاحظة المريض : </li></samp>
+
+ {{ data.Message  }}
+
+                   </div>
+
+
+
+
+
+
+<div class="inf "style="width: 100%; font-size: 12px;   ">
+<table style=" margin-bottom: 5px;"  ><tr><td class="td"><div class="inf-text"style=' width:100%;font-size: 12px; '> <samp style="padding-left: 8px;color: var(--primary-color);">إجمالي الفاتورة  : </samp> 3333 </div> </td> </tr></table>
+
+
+
+
+
+
+<div style="width: 100%; border-bottom:1px solid var(--primary-color);margin-bottom: 15px;" ></div>
+ <div class="inf-text" style="width: 90%; margin-bottom: 10px;margin: auto;   "  >  <button class="btn info"
+style="  background-color:red; color: #fff;  width: 100%;border-color: red;"  onclick="mytkmobil()"  > إلغاء</button>  </div>
+</div></div>
+</tr> </table>
+
+   </div>
+
+
+   {% empty %}
+   <h2  style ="text-align:center; padding-top:150px; color: var(--primary-color);">
+    لا توجد مواعيد متاحة</h2>
+
+     {% endfor %}
+
+
+
+
+
+
+
+
+
+      <script src="script.js"></script>
+
+
+      <script type="text/javascript">
+
+      // Get the modal
+      var modal = document.getElementById('id01');
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+          if (event.target == modal) {
+              modal.style.display = "none";
+          }
+      }
+      </script>
+
+         <script>
+           function tk() {
+             var x = document.getElementById("tk");
+             if (x.style.display === "none") {
+               x.style.display = "block";
+             } else {
+               x.style.display = "none";
+             }
+           } </script>
+
+
+      <script>
+      /* When the user clicks on the button,
+      toggle between hiding and showing the dropdown content */
+      function dropbtnFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+      }
+
+      // Close the dropdown if the user clicks outside of it
+      window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+          var dropdowns = document.getElementsByClassName("dropdown-content");
+          var i;
+          for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+              openDropdown.classList.remove('show');
+            }
+          }
+        }
+      }
+      </script>
+      <script>
+      /* When the user clicks on the button,
+      toggle between hiding and showing the dropdown content */
+      function myFunction() {
+        document.getElementById("Dropdown").classList.toggle("show");
+      }
+
+      // Close the dropdown if the user clicks outside of it
+      window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+          var dropdowns = document.getElementsByClassName("dropdown-content");
+          var i;
+          for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+              openDropdown.classList.remove('show');
+            }
+          }
+        }
+      }
+      </script>
+      <script type="text/javascript">
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+      checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', (event) => {
+          // Iterate over all checkboxes and uncheck them except for the one that was clicked
+          checkboxes.forEach(cb => {
+            if (cb !== event.target) {
+              cb.checked = false;
+            }
+          });
+        });
+      });
+      </script>
+      <script>
+      // Get the modal
+      var modal = document.getElementById('id01');
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+          if (event.target == modal) {
+              modal.style.display = "none";
+          }
+      }
+      </script>
+
+       <script>
+      // Get the modal
+
+      function myCalendar() {
+        var x = document.getElementById("calender");
+        if (x.style.display === "none") {
+          x.style.display = "block";
+        } else {
+          x.style.display = "none";
+        }
+      }
+      </script>
+       <script>
+      // Get the modal
+
+      function mydropdown() {
+        var x = document.getElementById("dropdownmobil");
+        if (x.style.display === "none") {
+          x.style.display = "block";
+        } else {
+          x.style.display = "none";
+        }
+      }
+      </script>
+
+
+       <script>
+      // Get the modal
+
+      function mytkmobil() {
+        var x = document.getElementById("tkmobil");
+        if (x.style.display === "none") {
+          x.style.display = "block";
+        } else {
+          x.style.display = "none";
+        }
+      }
+      </script>
+
+
+      <script>
+      function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+      }
+
+      function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+      }
+      </script>
+
+
+
+      <script>
+
+
+
+      // Get all the status checkboxes
+      var statusCheckboxes = document.querySelectorAll('.status-checkbox');
+
+      // Loop through the checkboxes and add an event listener to each one
+      statusCheckboxes.forEach(function(checkbox) {
+        checkbox.addEventListener('change', function(event) {
+          // Get the checkbox value
+          var isChecked = this.checked;
+          // Get the appointment ID and status from the data attributes
+          var appointmentId = this.dataset.appointmentId;
+          var status = this.dataset.status;
+          // Send an AJAX request to the Django view using XMLHttpRequest
+          var url = "http://127.0.0.1:8000/Dashboard/update_status?appointment_id=" + appointmentId + "&status=" + status;
+           var xhr = new XMLHttpRequest();
+          xhr.onreadystatechange = function() {
+            if (this.readyState === 4 && this.status === 200) {
+              // alert('yes');
+              // // alert(status);
+              // alert(appointmentId);
+            }
+          };
+          xhr.open("GET", url, true);
+          xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+          xhr.send();
+        });
+      });
+
+
+
+
+
+      </script>
+
+
+    </section>
+
+    <script src="script.js"></script>
+{% endblock %}

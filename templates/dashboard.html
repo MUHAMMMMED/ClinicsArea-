@@ -1,0 +1,808 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <title>{% block title %}{% for weB in weB %}  {{weB.slug}}{% endfor %}{% endblock %}</title>
+
+
+
+
+
+
+
+
+
+
+
+<html dir="rtl" lang="ar">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-1OyODF5lVn+X0Bd54Q/TC0LYT4rx+1b8x0XyFjz8vDzXKzr+Zmkd4Kb6oM0hL7wzufb9Hq0Ej0v9WyF6+4qkLQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <section   style ="  width: 99%;margin: auto;">
+
+    <style>
+
+    .header{ width: 70%;
+      background-color:#7e91dc;
+      height: 300px;
+       border-radius: 10px;
+       margin:auto;
+      border: 1px solid #ccc;
+
+
+       margin-bottom:150px;
+
+
+  }
+
+     .header-button {
+      border: none;
+      outline: 0;
+      display: inline-block;
+      padding: 10px 30px;
+      color: black;
+      font-size: 30px;
+      background-color: #fff;
+      text-align: center;
+      cursor: pointer;
+       border-radius: 5px;
+       color: #7e91dc;
+       box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    }
+     .header-button:hover {
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+
+
+    a {
+      color: #d1c091;/* Set link color */
+      text-decoration: none; /* Remove underline */
+      font-weight: bold; /* Set font weight */
+    }
+
+
+
+    </style>
+
+<style>
+  .floating-button {
+
+
+        background-color: var(--primary-color);
+        color: white;
+        padding: 16px;
+        font-size: 12px;
+        border: none;
+        cursor: pointer;
+        border-radius: 15px;
+        position: fixed;
+        bottom: 5%;
+        margin-right: 2%;
+
+
+
+  }
+
+  .floating-button:hover {
+    background-color: #666;
+  }
+
+  .floating-button-icon {
+    color: #fff;
+    font-size: 24px;
+  }
+
+  .notification-number {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 20px;
+    height: 20px;
+    background-color: #ff0000;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
+
+
+    <a href="{% url 'Dashboard:Appointment_waiting' %}">
+
+
+<div class="floating-button">
+<!--   <i class="floating-button-icon fas fa-bell"></i> -->
+ الحجوزات
+  <div class="notification-number">{{count}}</div>
+</div>
+
+</a>
+
+
+<h2 style=" text-aligh:center;">مرحباً  {{ user.username }}</h2>
+
+
+{% if weB %}
+{% for weB in weB %}
+
+<style >
+
+  .styled-button {
+    background-color: var(--primary-color);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+
+  .styled-button:hover {
+    background-color:#7e91dc;
+  }
+
+
+</style >
+
+<a href="{% url 'webs:web' weB.slug %}">
+  <button class="styled-button">عرض الموقع</button>
+</a>
+
+<style media="screen">
+
+  .visit-count {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #333;
+  }
+
+  /* For screens smaller than 600px */
+  @media (max-width: 600px) {
+  .visit-count {
+      font-size: 1em;
+    }
+  }
+
+
+
+</style>
+
+
+
+
+
+
+
+  {% endfor %}
+
+  {% else %}
+
+  {% endif %}
+
+
+  {% if weB %}
+
+
+
+
+   <section  class="header"  >
+{% for weB in weB %}
+
+<h1 style="font-size:50px; text-align:center; color: #fff;">تحديث موقعك الإلكتروني</h1>
+<div style=" width: 300px; margin: auto;">
+<a href="{% url 'Dashboard:web_update' pk=weB.pk %}">
+<button class="header-button" style="width: 100%;">تحديث </button>  </a>
+  </div>    </section>
+  {% endfor %}
+
+  {% else %}   <section  class="header"  >
+<h1 style="font-size:50px; text-align:center; color: #fff;">  إنشاء الموقع الإلكتروني     </h1>
+<div style=" width: 300px; margin: auto;">
+<a href="{% url 'Dashboard:create_web' %}">
+<button class="header-button" style="width: 100%;">إنشاء</button>  </a>
+  </div>
+    </section><br><br><br><br><br><br><br><br><br><br>
+  {% endif %}
+
+
+
+
+<style>
+  .categories {
+  width: 90%; margin: auto; margin-top: 150px; margin-bottom: 200px;
+
+  }
+div.gallery {
+
+
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 180px;
+
+
+align-items: center; background-color: #fff; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); margin-bottom: 20px; overflow: hidden; border: 1px solid #ccc; width: 20%; float: right;
+
+
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+   padding-top: 1px;
+}
+
+
+
+
+
+    @media screen and (max-width: 600px) {
+  /* CSS rules for screens with a maximum width of 600px */
+
+  div.gallery {
+
+
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 45%;
+
+  align-items: center; background-color: #fff; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); margin-bottom: 20px; overflow: hidden; border: 1px solid #ccc; width: 20%; float: right;
+
+
+  }
+
+ .categories{width: 95%; margin: auto; margin-top: 150px; padding-bottom: 50px;}
+}
+</style>
+{% if weB %}
+{% if categories %}
+
+ <section>
+
+<h3 style="font-size:30px; text-align: right; color:#7e91dc;margin-top:60px; margin-bottom:30px; "> الاطباء </h3>
+
+<a href="{% url 'Dashboard:create_doctor'  %}" class="btn btn-primary">
+<button class="card-button" style="  padding: 15px 35px; margin-bottom:15px;">  إضافة دكتور  </button>  </a>
+<br>
+<style>
+.chip {
+ display: inline-block;
+ padding: 0 25px;
+ height: 60px;
+ font-size: 16px;
+ line-height: 60px;
+ border-radius: 25px;
+ background-color: #7e91dc;
+ color: #fff;
+ margin-top:15px;
+}
+
+.chip img {
+ float: left;
+ margin: 0 10px 0 -25px;
+ height:60px;
+ width: 60px;
+ border-radius: 50%;
+}
+
+.button-chip{border: none;
+    outline: 0;
+    display: inline-block;
+    background-color: #7e91dc;
+     color: #fff;
+    font-size: 30px;
+    padding-right:5px;
+    text-align: center;
+    cursor: pointer;
+ }
+
+
+
+</style>
+
+
+
+
+
+
+
+
+  <div  style="width=100%;">
+
+{% for doctor in doctors %}
+
+
+<div class="chip">
+  {% if  doctor.Image %}
+  <img src="{{doctor.Image.url}}" alt="{{ doctor.Name }}" width="96" height="96">
+  {% endif %}
+<a href="{% url 'Dashboard:delete_doctor' doctor.id %}">
+<button class="button-chip"  >  <i class="fa fa-close"></i></button>
+ </a>
+
+ <a href="{% url 'Dashboard:update_doctor' doctor.id %}">
+<button class="button-chip"  >  <i class="fa fa-pencil-square-o"></i></button>
+  </a>
+
+
+<button  class="button-chip"    style="font-size:24px">{{ doctor.Name }} </button>
+
+</div>
+{% endfor %}
+</div>
+</section>
+
+
+
+
+<section>
+<h3 style="font-size:30px; text-align: right; color:#7e91dc;margin-top:60px; margin-bottom:30px; "> الاقسام </h3>
+
+<a href="{% url 'Dashboard:create_department'  %}" class="btn btn-primary">
+<button class="card-button" style="  padding: 15px 35px; margin-bottom:15px; margin-top:15px; ">  إضافة قسم  </button>  </a>
+<br>
+ <div  style="width=100%;">
+{% for department in department %}
+<div class="chip">
+  <a href="{% url 'Dashboard:delete_department' department.id %}">
+  <button class="button-chip"  >  <i class="fa fa-close"></i></button>
+   </a>
+
+
+
+  <a href="{% url 'Dashboard:update_department' department.id %}">
+<button class="button-chip"  >  <i class="fa fa-pencil-square-o"></i></button>
+   </a>
+
+
+
+<button  class="button-chip"  style="font-size:24px">{{ department.name }} </button>
+</div>
+{% endfor %}
+</div>
+</section>
+
+
+
+ <section>
+<h3 style="font-size:30px; text-align: right; color:#7e91dc;margin-top:60px; margin-bottom:30px; "> الخدمات </h3>
+
+<a href="{% url 'Dashboard:create_section'  %}" class="btn btn-primary">
+<button class="card-button" style="  padding: 15px 35px; margin-bottom:15px; margin-top:15px; ">  إضافة خدمات </button>  </a>
+<br>
+
+  <div  style="width=100%;">
+{% for Section in Section %}
+
+<div class="chip">
+  {% if  Section.image %}
+  <img src="{{Section.image.url}}" alt="{{ Section.name }}" width="96" height="96">
+  {% endif %}
+
+  <a href="{% url 'Dashboard:delete_section' Section.id %}">
+  <button class="button-chip"  >  <i class="fa fa-close"></i></button> </a>
+
+  <a href="{% url 'Dashboard:update_section' Section.id %}">
+<button class="button-chip"  >  <i class="fa fa-pencil-square-o"></i></button>
+   </a>
+
+<button  class="button-chip"    style="font-size:24px">{{ Section.name }} </button>
+
+
+</div>
+{% endfor %}
+</div>
+</section>
+
+
+
+<section>
+<h3 style="font-size:30px; text-align: right; color:#7e91dc;margin-top:60px; margin-bottom:30px; ">شركات التامين </h3>
+<a href="{% url 'Dashboard:create_insurance'  %}" class="btn btn-primary">
+<button class="card-button" style="  padding: 15px 35px; margin-bottom:15px; margin-top:15px; ">     إضافة تأمين   </button>  </a>
+<br>
+
+ <div  style="width=100%;">
+{% for Insurance in Insurance %}
+
+
+<div class="chip">
+ {% if  Insurance.image %}
+ <img src="{{doctor.Image.url}}" alt="{{ doctor.name }}" width="96" height="96">
+ {% endif %}
+
+ <a href="{% url 'Dashboard:delete_insurance' Insurance.id %}">
+ <button class="button-chip"  >  <i class="fa fa-close"></i></button>
+  </a>
+
+
+  <a href="{% url 'Dashboard:update_insurance' Insurance.id %}">
+<button class="button-chip"  >  <i class="fa fa-pencil-square-o"></i></button>
+   </a>
+<button  class="button-chip"    style="font-size:24px">{{ Insurance.name }} </button>
+
+
+</div>
+{% endfor %}
+</div>
+</section>
+
+<section>
+<h3 style="font-size:30px; text-align: right; color:#7e91dc;margin-top:60px; margin-bottom:30px; "> صور العيادات </h3>
+
+<a href="{% url 'Dashboard:create_image'  %}" class="btn btn-primary">
+<button class="card-button" style="  padding: 15px 35px; margin-bottom:15px; margin-top:15px; ">  إضافة صوره  </button>  </a>
+<br>
+
+ <div  style="width=100%;">
+{% for Image in Image %}
+
+
+<div class="chip">
+ {% if  Image.image %}
+ <img src="{{Image.image.url}}" alt="{{ Image.name }}" width="96" height="96">
+ {% endif %}
+
+ <a href="{% url 'Dashboard:delete_image' Image.id %}">
+ <button class="button-chip"  >  <i class="fa fa-close"></i></button>
+  </a>
+
+
+<a href="{% url 'Dashboard:update_image' Image.id %}">
+<button class="button-chip"  >  <i class="fa fa-pencil-square-o"></i></button>  </a>
+
+<button  class="button-chip"    style="font-size:24px">{{ Image.imagename }} </button>
+
+
+</div>
+{% endfor %}
+</div>
+</section>
+
+<section>
+<h3 style="font-size:30px; text-align: right; color:#7e91dc;margin-top:60px; margin-bottom:30px; "> أشهر الأسئله وأجوبتها </h3>
+
+<a href="{% url 'Dashboard:create_question'  %}" class="btn btn-primary">
+<button class="card-button" style="  padding: 15px 35px; margin-bottom:15px; margin-top:15px; ">   إضافة سؤال    </button>  </a>
+<br>
+
+ <div  style="width=100%;">
+{% for Questions in Questions %}
+
+
+<div class="chip">
+
+  <a href="{% url 'Dashboard:delete_question' Questions.id %}">
+  <button class="button-chip"  >  <i class="fa fa-close"></i></button>
+   </a>
+
+
+   <a href="{% url 'Dashboard:update_question' Questions.id %}">
+   <button class="button-chip"  >  <i class="fa fa-pencil-square-o"></i></button>  </a>
+
+<button  class="button-chip"    style="font-size:24px">{{ Questions.question }} </button>
+
+
+</div>
+{% endfor %}
+</div>
+</section>
+
+
+
+
+
+
+<section class="categories">
+
+<div style=" width: 100%; margin: auto;">
+
+<h3 style="font-size:30px; text-align: center; color:#7e91dc; ">التصنيفات </h3>
+<div style="  margin:auto; margin-bottom: 15px;">
+    <a href="{% url 'Dashboard:create_category' %}">
+<button class="card-button" style="  padding: 15px 35px;">   اضافة تصنيف جديد  </button></a>
+</div>
+
+</div>
+<div style="width: 100%; ">
+
+{% for category in categories %}
+
+<div class="gallery">
+<a   href=" ">
+  {% if category.Image %}
+  <img src="{{ category.Image.url }}" alt="{{ category.Name }}" width="600" height="400">
+  {% endif %}
+
+ </a>
+<div class="desc">
+<h3 style="color:#7e91dc;">{{ category.Name }}</h3>
+ <p>مشاهدات   </p>
+  <p> {{ category.views }} </p>
+ <p> نقرات الواتساب     </p>
+  <p> {{ category.Click_whatsapp }} </p>
+
+  <a href="{% url 'Dashboard:update_category' pk=category.pk %}">
+ <button  class="card-button">تحديث  </button></a>
+  <a href="{% url 'Dashboard:delete_category' category.pk %}">
+ <button class="card-button">حذف </button></a>
+</div></div>
+
+
+{% endfor %}
+
+
+
+
+</div>
+ <div  style=" margin-top: 100px;     width: 100%;  "></div>
+
+ </section>
+ {% else %}
+
+ <section  class="header"  >
+
+ <h1 style="font-size:50px; text-align:center; color: #fff;">اضافة تصنيف جديد</h1>
+ <div style=" width: 300px; margin: auto;">
+
+
+   <a href="{% url 'Dashboard:create_category' %}">
+
+ <button class="header-button" style="width: 100%;">إنشاء </button>  </a>
+ </div>
+
+
+
+ </section>
+
+
+ {% endif %}
+
+
+
+
+   {% else %}
+
+
+
+   {% endif %}
+
+ <br>
+
+
+
+  <!-- CSS styling -->
+  <style type="text/css">
+
+    .section-service{width: 90%; margin: auto; margin-top: 150px; padding-bottom: 50px;}
+    .card {
+      border: 1px solid #ccc;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+      margin-bottom: 20px;
+    }
+
+    .avatar {      border: 1px solid #ccc;
+      height:220px;
+      border-radius: 0px 10px 10px 0px ;
+    }
+
+    .card-info {
+      flex-grow: 1;
+      display: flex;
+      flex-wrap: wrap;
+      width: 50%;
+      justify-content: space-between; /* added */
+      align-items: center; /* added */
+    }
+
+    .card-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      width: 100%;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    .card-label {
+      font-weight: bold;
+      margin-right: 12px;
+      min-width: 100px;
+    }
+
+    .card-value {
+      flex-grow: 1;
+      margin-right: 8px;
+    }
+
+    .card-icons {
+      display: flex;
+      align-items: center;
+    }
+
+    .card-icons i {
+      margin-right: 10px;
+      cursor: pointer;
+
+    }
+
+    @media only screen and (max-width: 768px) {
+     .section-service{width: 95%; margin: auto; margin-top: 150px; padding-bottom: 50px;}
+      .card {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .card-info {
+        width: 100%;
+        margin-top: 20px;
+        justify-content: center; /* modified */
+      }
+
+      .avatar {
+        width: 100%;
+        height: auto;
+        border-radius: 10px 10px 0px 0px ;
+        border: 1px solid #ccc;
+      }
+
+      .card-row {
+        flex-direction: column;
+        align-items: center; /* modified */
+        text-align: center;
+      }
+
+      .card-label {
+        margin-bottom: 5px;
+        min-width: auto;
+      }
+    }
+
+    /* Styling for buttons */
+    .card-button {
+      background-color: #7e91dc;
+      border: none;
+      color: white;
+      padding: 8px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 10px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .card-button:hover {
+      background-color:  #7e91dc;
+    }
+  }
+
+
+
+
+    @media screen and (max-width: 600px) {
+  /* CSS rules for screens with a maximum width of 600px */
+ .section-service{width: 95%; margin: auto; margin-top: 150px; padding-bottom: 50px;}
+}
+  </style>
+
+
+
+{% if categories %}
+
+
+{% if services %}
+
+
+  <section class="section-service" >
+ <div  style="     width: 100%;   height:170px;  "></div>
+  <div style=" width: 100%; margin: auto;">
+  <h3 style="font-size:30px; text-align: center; color:#7e91dc; ">العروض </h3>
+  <div style="  margin:auto; margin-bottom: 15px;">
+    <a href="{% url 'Dashboard:create_service' %}"  >
+
+  <button class="card-button" style="  padding: 15px 35px;">  إضافة عرض جديد</button> </a>
+  </div></div>
+
+  {% for service in services %}
+  <div class="card">
+  {% if service.Image %}
+    <img src="{{ service.Image.url }}" alt="{{ service.Title }}"class="avatar">
+  {% endif %}
+  <div class="card-info">
+    <div class="card-row">
+      <div class="card-label"> تاريخ الإنشاء  </div>
+      <div class="card-value">{{ service.created_at }} </div>
+    </div>
+          <div class="card-row">
+            <div class="card-label">العنوان</div>
+            <div class="card-value">{{ service.Title }}</div>
+          </div>
+
+          <div class="card-row">
+            <div class="card-label">السعر</div>
+            <div class="card-value">{{ service.price }}</div>
+          </div>
+          <div class="card-row">
+               <div class="card-label"> الفئة</div>
+               <div class="card-value">{{ service.category_id.Name }}</div>
+             </div>
+
+
+        </div>
+        <div class="card-info">
+
+          <div class="card-row">
+            <div class="card-label">  مشاهدات  العرض</div>
+            <div class="card-value">  {{ service.views }}</div>
+          </div>
+          <div class="card-row">
+            <div class="card-label">  نقرات الواتساب   </div>
+            <div class="card-value">{{service.Click_whatsapp}}</div>
+          </div>
+   <div class="card-row">
+  <div class="card-label">
+    <a href="{% url 'Dashboard:update_service' service.id %}" class="btn btn-primary">
+    <button class="card-button">تحديث <i class="fa fa-edit"></i></button></a>
+  </div>
+   <div class="card-value">
+        <a href="{% url 'Dashboard:delete_service' service.id %}" class="btn btn-danger">
+     <button class="card-button">حذف<i class='fas fa-trash-alt'></i></button></a></div>
+
+  </div></div>  </div>{% endfor %} <br> <br> <br> <br> <br>
+
+
+</section>
+ <br> <br> <br> <br>
+
+
+  {% else %}
+ <div  style="     width: 100%;   height:200px; margin-top:200px; "></div>
+  <section  class="header"  >
+  <h1 style="font-size:50px; text-align:center; color: #fff;">  إضافة عرض جديد   </h1>
+  <div style=" width: 300px; margin: auto;">
+
+     <a href="{% url 'Dashboard:create_service' %}"  >
+
+  <button class="header-button" style="width: 100%;">إنشاء </button>  </a>
+
+  </div>
+
+ <br>
+
+  </section>
+
+  </section>
+  {% endif %}
+  {% else %}
+  {% endif %}
+
+
+
+
+  {% endblock %}

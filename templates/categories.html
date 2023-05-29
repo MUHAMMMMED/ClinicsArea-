@@ -1,0 +1,457 @@
+
+
+{% extends "BaseGeneric.html" %}
+{% load static %}
+<title>{{web.slug}}  | {{category.Name}}  </title>
+<meta name="keywords" content="{{ category.keywords }} " />
+{% block content %}
+
+
+
+
+   <!-- Google Tag Manager -->
+   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+ })(window,document,'script','dataLayer','{{web.pixal_id}}');</script>
+   <!-- End Google Tag Manager -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <div class="topnav" id="myTopnav">
+   {% if web.logo %}
+    <a href="{% url 'webs:web' web.slug %}" class="active"><div class="div-logo" >
+   <img src="{{web.logo.url}}" class="logo-img" alt="{{web}}"> </div> </a>{% endif %}
+    <a href="{% url 'webs:web' web.slug %}">الصفحه الرئيسيه</a>
+    <a href="{% url 'webs:categories_services'  web.slug   %}">جميع العروض  </a>
+
+
+    {% for category in categories_nav %}
+
+    <a href="{% url 'webs:categories' web.slug category.id %}">   {{category.Name}}      </a>
+  {% endfor %}
+
+
+
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+      <samp class="icon-span">
+      <i class="fa fa-bars"></i>    </samp>
+    </a>
+  </div>
+</header>
+
+
+
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:slnt,wght@0,500;0,700;2,400&family=Koulen&family=Staatliches&display=swap');
+
+
+#myImg {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#myImg:hover {opacity: 0.7;}
+
+
+
+
+</style>
+
+
+<section style="  height: auto;width:100%; margin: auto; margin-top: 15px; margin-bottom: 15px;">
+
+
+     <!-- Google Tag Manager (noscript) -->
+     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{web.pixal_id}}"
+     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+     <!-- End Google Tag Manager (noscript) -->
+
+
+
+
+
+
+
+<div style="width: 99%; margin: auto;">
+
+<div style="width: 100%; margin: auto;">{% if category.Image %}
+<img   src="{{category.Image.url}}" alt=" {{category.Name}} " style="width:100%;
+box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;">{% endif %}
+
+</div>
+
+
+
+<style type="text/css">
+
+
+.section--title{
+margin-right: 15px;
+ text-align: center;
+
+}
+.divider {
+  width: 150px;
+  height: 5px;
+  background-color: #d1c091;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+</style>
+
+
+
+
+
+<div class="section-header ">
+<h2 class="section--title"><span>{{category.Name}}</span></h2>
+
+<hr class="divider">
+
+</div>
+
+<style>
+
+
+
+
+
+
+
+
+
+
+
+.Container{
+
+    /* background-color: lightgreen; */
+      width: 99%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-content: flex-start;
+    margin: auto;
+    min-height: 30em;
+    padding: 3em 1em 1em 1em;
+    box-sizing: border-box;
+}
+
+/* Card Styling */
+.card-div{    border: 1px solid #ccc;
+    width: 20em;
+    min-height: 20em;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    background-color: var(--card-main-color);
+    margin: 0.6em;
+    box-sizing: border-box;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: transform 0.2s ease-in-out;
+     border-radius: 8px ;
+}
+
+/* ======== General styling of all cards and heart divs ========== */
+.img-div{
+    width: 100%;
+    height: 8em;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: 1rem;
+    z-index: 1;
+    border-radius: 0 0 10px 10px;
+}
+
+.img-div img{
+    transform-origin: bottom;
+    transform: translateY(7.5%);
+    transition: transform 0.3s ease-in-out
+}
+
+
+
+/* God of war image and heart-background*/
+.gow-img-div{
+    background-color: var(--card-1-secondary-color);
+}
+
+.gow-img-div img{
+    width: 100%;
+    border-radius: 8px 8px  0px  0px ;
+
+    /* background-color: whitesmoke; */
+}
+
+
+
+/* ======== text Container Styling general ======== */
+
+.text-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* background-color: yellow; */
+    padding: 0 1.5em;
+
+    padding-bottom: 1em;
+    box-sizing: border-box;
+}
+
+.text-container .item-name,
+.text-container .date{
+    margin: 0.25em 0;
+    text-align: center;
+}
+
+.text-container .item-name{
+    font-size: 1em;
+    font-weight: var(--title-font-weight);
+    color: var(--heading-color);
+}
+
+.text-container .date{
+    font-size: 0.9em;
+    font-weight: var(--date-font-weight);
+    color: var(--date-text-color);
+}
+
+/* === Pricing and cart div  ===== */
+.pricing-and-cart{
+    /* background-color: wheat; */
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0.25em 0 1em 0;
+}
+.pricing{
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+
+
+.current-price{
+    color: var(--current-price-text-color);
+    font-size: 1.3rem;
+    font-weight: var(--pricing-font-weight);
+    /* background-color: yellow; */
+    margin: 0;
+
+  color: #d1c091;;
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: .5rem;
+
+}
+
+.pricing-and-cart{
+    width: 100%;
+}
+
+.fa-shopping-cart{
+    font-size: 1rem;
+    top: 0;
+    color: #d1c091;
+    padding:  3px ;
+    color:#fff;
+}
+.add-to-cart{
+  background-color:  #d1c091; /* orange color */
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding:  0px 5px  0px 5px   ;
+  transition: 0.3s;
+  font-size: 8px;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  color: #fff;
+
+}
+
+/* ====== Hover effects ======= */
+.card-div:hover .img-div img{
+    transform: translateY(7.5%) scale(1.2);
+}
+
+.card-div:hover{
+    transform: translate(0, -10px);
+}
+
+
+a {
+  color: #d1c091;/* Set link color */
+  text-decoration: none; /* Remove underline */
+  font-weight: bold; /* Set font weight */
+}
+
+a:hover {
+
+  /* text-decoration: underline; /* Add underline on hover */ */
+}
+.fa-shopping-cart:hover {
+
+}
+
+.add-to-cart:hover {
+  transform: translateY(10%);
+}
+</style>
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+
+
+
+    <div class="Container">
+
+
+
+
+
+
+
+      {% for service in category.Services.all %}
+          <div class="card card-div">
+  <a href="{% url 'webs:service' web.slug category.id service.id %}">
+                  <div class="gow-img-div">
+                      {% if service.Image %}
+                          <img src="{{ service.Image.url }}" alt="{{ service.Title }}">
+                      {% endif %}
+                  </div>
+              </a>
+              <div class="text-container">
+                  <a href="{% url 'webs:service' web.slug category.id service.id %}">
+                      <h2 class="item-name">{{ service.Title }}</h2>
+                  </a>
+                  <div class="pricing-and-cart">
+                      <div class="pricing">
+                          <p class="current-price">{{ service.price }} ر.س</p>
+                      </div>
+                      <button class="add-to-cart" data-id="{{ service.id }}">
+                      إضافة للسلة    <i class="fas fa-shopping-cart"></i>
+                      </button>
+                  </div>
+              </div>
+          </div>
+      {% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+   </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+</section>
+<a class="button-card" href="{% url 'webs:cart_and_checkout' web.slug  %}">
+<button class="notification-button">
+<img src="{% static 'images/card.png' %}" alt="Image Description" class="notification-icon">
+  {% if cart_item_count %}
+<span class="notification-number"><span id="cart-count">
+
+    {{ cart_item_count }}
+  {% else %}
+    <!-- 0 -->
+  {% endif %}
+</span>
+</button>
+</a>
+
+
+<div class="floating_btn"id="whatsapp-button"> <a target="_blank" href="https://wa.me/{{web.Whatsapp}}  ">
+        <div class="contact_icon"> <i class="fab fa-whatsapp my-float"></i> </div>
+    </a> </div>
+
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#whatsapp-button').click(function() {
+        $.ajax({
+
+          url: '{% url "webs:increment_click_category_whatsapp" category_id=category.id %}',
+          method: 'POST',
+          data: {
+            'csrfmiddlewaretoken': '{{ csrf_token }}',
+          },
+          success: function(response) {
+            // Update the click count on the page
+            $('#click-whatsapp-count').text(response.click_whatsapp);
+          },
+        });
+      });
+    });
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

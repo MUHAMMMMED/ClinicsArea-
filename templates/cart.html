@@ -1,0 +1,448 @@
+
+
+{% extends "BaseGeneric.html" %}
+{% load static %}
+{% block content %}
+ <title>{{web.slug}}  | سلة المشتريات  </title>
+
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','{{web.pixal_id}}');</script>
+    <!-- End Google Tag Manager -->
+
+
+
+
+
+<div class="topnav" id="myTopnav">
+  {% if web.logo %}
+   <a href="{% url 'webs:web' web.slug %}" class="active"><div class="div-logo" >
+  <img src="{{web.logo.url}}" class="logo-img" alt="{{web}}"> </div> </a>{% endif %}
+    <a href="{% url 'webs:web' web.slug %}">الصفحه الرئيسيه</a>
+  <a href="{% url 'webs:categories_services'  web.slug   %}">جميع العروض  </a>
+
+
+  {% for category in categories_nav %}
+
+  <a href="{% url 'webs:categories' web.slug category.id %}">   {{category.Name}}      </a>
+{% endfor %}
+
+
+
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <samp class="icon-span">
+    <i class="fa fa-bars"></i>    </samp>
+  </a>
+</div>
+</header>
+
+
+
+
+
+<section style=" width:90%;  margin: auto;   ">
+
+
+      <!-- Google Tag Manager (noscript) -->
+      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{web.pixal_id}}"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <!-- End Google Tag Manager (noscript) -->
+   
+
+<style>
+* {
+ box-sizing: border-box;
+}
+@import url('https://fonts.googleapis.com/css2?family=Cairo:slnt,wght@0,500;0,700;2,400&family=Koulen&family=Staatliches&display=swap');
+a {
+  color: #d1c091;/* Set link color */
+  text-decoration: none; /* Remove underline */
+  font-weight: bold; /* Set font weight */
+}
+a:hover {
+
+  /* text-decoration: underline; /* Add underline on hover */ */
+}
+
+#myTable {
+ border-collapse: collapse;
+ width: 100%;
+ border: 1px solid #ddd;
+ font-size: 18px;
+
+ margin: auto;
+}
+
+#myTable th, #myTable td {
+ text-align: right;
+ padding: 12px;
+
+
+
+}
+
+#myTable tr {
+ border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+ background-color: #f1f1f1;
+}
+
+
+
+.delete-cart-item {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.delete-cart-item:hover {
+  background-color: #c82333;
+}
+
+.delete-cart-item:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.5);
+}
+
+
+
+
+
+
+
+</style>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+
+
+
+<table id="myTable">
+
+ <h3 style="width: 100%; text-align: center;   ">       سلة المشتريات       </h3>
+
+  {% if cart_items %}
+  {% for cart_item in cart_items %}
+
+<tr><td style="width:100px; ">
+  {% if cart_item.service.Image %}
+
+
+
+   <img  src="{{  cart_item.service.Image.url }}" alt="{{ cart_item.service.Title }}"style="width:100px;
+box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;">  {% endif %}</td><td>{{ cart_item.service.Title }}</td><td>{{ cart_item.service.price }}</td>
+<td>
+  <form  class="0">
+
+
+<button type="submit" class="delete-cart-item" data-id="{{ cart_item.id }}">حذف</button>
+
+</form>
+
+</td> </tr>
+  {% endfor %}
+
+
+<tr style="background:#f1f1f1;">
+
+<td> مجموع السلة</td>
+
+<td> </td>
+
+<td>{{ total_price }}</td>
+<td> </td>
+</tr>
+
+</table>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+
+ <script>
+
+ $(document).on('click', '.refresh-cart-items', function() {
+   $.ajax({
+     url: '{% url "webs:cart_item_delete" %}',
+     method: 'GET',
+     success: function(response) {
+       var cartTable = $('#myTable');
+       cartTable.find('tbody').empty();
+       var total = 0;
+       for (var i = 0; i < response.cart_items.length; i++) {
+         var cartItemData = response.cart_items[i];
+         var rowHtml = '<tr><td>';
+         if (cartItemData.service_image_url) {
+           rowHtml += '<img src="' + cartItemData.service_image_url + '" alt="' + cartItemData.service_title + '" style="width:100px; box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;">';
+         }
+         rowHtml += '</td><td>' + cartItemData.service_title + '</td><td>' + cartItemData.service_price + '</td><td><<button class="delete-cart-item" data-id="' + cartItemData.id + '">Delete</button></td></tr>';
+         cartTable.find('tbody').append(rowHtml);
+         total += cartItemData.service_price;
+       }
+       cartTable.find('#total-price').text(total);
+     },
+     error: function(xhr, status, error) {
+       alert('An error occurred while refreshing the cart items.');
+     }
+   });
+ });
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+ <style>
+
+
+.form {
+margin-top:15px;
+border-radius: 5px;
+border: 1px solid #ddd;
+padding20px;
+}
+
+.Container {
+  border-radius: 5px;
+  padding: 20px;
+  background-color: #fff;
+
+
+}
+
+input[type=text], input[type=submit] {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+
+
+
+
+
+
+input[type=checkbox] {
+  margin-top: 16px;
+}
+
+input[type=submit] {
+  background-color: #d1c091;
+  color: white;
+  border: none;
+}
+
+input[type=submit]:hover {
+  opacity: 0.8;
+}
+</style>
+
+
+<div class="background-color:red;  width: 100%; ">
+
+
+
+  <form   class="form"  method="post" >
+    {% csrf_token %}
+    <div class="Container" style="background-color:white">
+      <h2 style="text-align: center;">احجز الان</h2>
+      {{ booking_form.as_p }}
+
+
+      <!-- {{ form.as_p }} -->
+
+
+      <input type="submit" value=" تقديم الطلب   ">
+    </div>
+  </form>
+
+
+
+
+</div>
+
+{% else %}
+
+
+
+
+
+
+<style media="screen">
+
+
+
+  /* Style for the confirmation message */
+.confirmation-message {
+  margin: 50px auto;
+  max-width: 600px;
+  padding: 20px;
+  text-align: center;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+}
+
+/* Style for the booking ID */
+.booking-id {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Style for the back and view buttons */
+.back-button,
+.view-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #d1c091;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+/* Style for the back button */
+.back-button {
+  margin-right: 10px;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  .confirmation-message {
+    margin: 20px auto;
+    padding: 10px;
+  }
+
+  .back-button,
+  .view-button {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+</style>
+
+
+
+
+
+
+
+
+<!-- Confirmation message -->
+<div class="confirmation-message">
+  <h2>
+عرض الفئات والخدمات
+ </h2>
+
+
+
+  <!-- Back and view buttons -->
+
+  <a href="{% url 'webs:categories_services' web.slug  %}" class="view-button"> عرض الفئات والخدمات</a>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  {% endif %}
+</section>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+
+<script>
+  $(document).on('click', '.delete-cart-item', function() {
+     var cartItemId = $(this).data('id');
+     $.ajax({
+          url: '{% url "webs:cart_item_delete" %}?cartItemId=' + cartItemId,
+         method: 'POST',
+         data: {
+             'cart_item_id': cartItemId,
+             'csrfmiddlewaretoken': '{{ csrf_token }}'
+         },
+         success: function(response) {
+             if (response.success) {
+                 // Delete the cart item HTML element from the page
+                 $('#cart-item-' + cartItemId).remove();
+             } else {
+                 alert(response.message);
+             }
+         },
+         error: function(xhr, status, error) {
+             alert('An error occurred while deleting the cart item.');
+         }
+     });
+ });
+
+
+ </script>
+
+{% endblock %}
